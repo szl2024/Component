@@ -162,11 +162,8 @@ func parsePortsParam(portsStr string) (int, int, error) {
 
 // generateNewPath 路径生成函数
 func generateNewPath(originalPath, systemRef string) string {
-	refPart := strings.TrimPrefix(systemRef, "system_")
-	return strings.Replace(
-		originalPath,
-		"system_root.xml",
-		fmt.Sprintf("system_%s.xml", refPart),
-		1,
+	return filepath.Join(
+		filepath.Dir(originalPath),
+		systemRef+".xml",
 	)
 }

@@ -6,11 +6,8 @@ var (
 	Dir       string
 	BuildDir  string
 	OutputDir string
-	Windir    string
-	Wsldir    string
-	Classin   int
-	Classout  int
-    Systems []*System
+	Windir    string // 仅保留Windows路径变量
+	Systems   []*System
 )
 
 type Connection struct {

@@ -68,17 +68,7 @@ func InputPath() string {
 }
 
 // ChangePath 路径转换
-func ChangePath(dirPath string) (string, error) {
-	// 替换路径分隔符
-	dirPath = strings.ReplaceAll(dirPath, "\\", "/")
-	if len(dirPath) < 2 || dirPath[1] != ':' {
-		return dirPath, fmt.Errorf("非 Windows 路径格式: %s", dirPath)
-	}
 
-	driveLetter := strings.ToLower(string(dirPath[0]))
-	Public_Data.Wsldir = "/mnt/" + driveLetter + dirPath[2:]
-	return Public_Data.Wsldir, nil
-}
 
 // CopyMatchingSLXFiles 复制匹配的 SLX 文件
 func CopyMatchingSLXFiles(sourceDir string) error {
