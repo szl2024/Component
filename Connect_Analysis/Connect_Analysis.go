@@ -3,33 +3,27 @@ package Connect_Analysis
 import "Project/component/Public_Data"
 
 func ConnectAnalysis(srcID int, dstID int, currentSystem *Public_Data.System) {
-    // A. 如果当前系统下某个 Port 是 srcID，就在它上挂 "out" 连接
+    // A. If a port in the current system is srcID, hang an "out" connection on it
     for _, port := range currentSystem.Port {
         if port.SID == srcID {
-            conn := &Public_Data.Connection{
+            port.Connection = append(port.Connection, &Public_Data.Connection{
                 SrcPortSID:  srcID,
                 DstBlockSID: dstID,
                 Direction:   "out",
-            }
-            port.Connection = append(port.Connection, conn)
-            break
-        }
-    }
-
-    // B. 如果某个 Port 是 dstID，就在它上挂 "in" 连接
-    for _, port := range currentSystem.Port {
-        if port.SID == dstID {
-            conn := &Public_Data.Connection{
+            })
+        } else if port.SID == dstID {
+            port.Connection = append(port.Connection, &Public_Data.Connection{
                 SrcPortSID:  srcID,
                 DstBlockSID: dstID,
                 Direction:   "in",
-            }
-            port.Connection = append(port.Connection, conn)
+            })
+        }
+        if port.SID == srcID || port.SID == dstID {
             break
         }
     }
 
-    // C. 递归处理子系统
+    //C. Recursive processing subsystem
     for _, sub := range currentSystem.System {
         ConnectAnalysis(srcID, dstID, sub)
     }

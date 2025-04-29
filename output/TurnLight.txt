@@ -1,5 +1,5 @@
-📦 系统结构分析结果如下：
-📦🏷️ System: TurnLight_Runnable_10ms_sys (SID: 4) 
+📦 The results of the system architecture analysis are as follows：
+📦🏷️System: TurnLight_Runnable_10ms_sys (SID: 4)
   ├─📊 nClass: 14
   ├─📊 portAsr: 18 (In: 17 Out: 1 )
   ├─📊 portSim: 5 (In: 3 Out: 2 )
@@ -40,7 +40,7 @@
   │   └─🔗  [→] HazardCtrlLogic (SID: 66)
   ├─🔌 Port: TurnLampSwMode_u8_signa_write       (SID:   41, Type: C-S , IO: Out)
   │   └─🔗  [←] (Block) Logical Operator (SID: 229)
-  ├─    📦 System: HazardCtrlLogic (SID: 66) 
+  ├─📦System: HazardCtrlLogic (SID: 66)
       ├─📊 nClass: 0
       ├─📊 portAsr: 6 (In: 5 Out: 1 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
@@ -57,7 +57,7 @@
       │   └─🔗  [→] (Block) SFunction (SID: 107)
       ├─🔌 Port: HazardRqst                          (SID:  106, Type: C-S , IO: Out)
       │   └─🔗  [←] (Block) SFunction (SID: 107)
-  ├─    📦 System: TurnLightCtrlLogic (SID: 67) 
+  ├─📦System: TurnLightCtrlLogic (SID: 67)
       ├─📊 nClass: 0
       ├─📊 portAsr: 6 (In: 4 Out: 2 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
@@ -74,7 +74,7 @@
       │   └─🔗  [←] (Block) SFunction (SID: 107)
       ├─🔌 Port: TurnLampSWMode                      (SID:  106, Type: S-R , IO: Out)
       │   └─🔗  [←] (Block) SFunction (SID: 107)
-  ├─    📦 System: TurnLightDiag (SID: 68) 
+  ├─📦System: TurnLightDiag (SID: 68)
       ├─📊 nClass: 0
       ├─📊 portAsr: 17 (In: 9 Out: 8 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
@@ -113,7 +113,7 @@
       │   └─🔗  [←] (Block) Demux (SID: 122)
       ├─🔌 Port: TurnLight_RROFF_SHORT()             (SID:  118, Type: S-R , IO: Out)
       │   └─🔗  [←] (Block) Demux (SID: 122)
-  ├─    📦 System: TurnLightSelector (SID: 69) 
+  ├─📦System: TurnLightSelector (SID: 69)
       ├─📊 nClass: 0
       ├─📊 portAsr: 10 (In: 3 Out: 7 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
@@ -138,50 +138,50 @@
       │   └─🔗  [←] (Block) Demux (SID: 114)
       ├─🔌 Port: TurnLight_ALLON()                   (SID:  108, Type: S-R , IO: Out)
       │   └─🔗  [←] (Block) Demux (SID: 114)
-  ├─    🏷️ System: TurnLight_ALLOFF (SID: 70) 
+  ├─🏷️System: TurnLight_ALLOFF (SID: 70)
       ├─📊 nClass: 0
       ├─📊 portAsr: 0 (In: 0 Out: 0 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
       ├─📊 M1: 0 
-  ├─    🏷️ System: TurnLight_ALLON (SID: 81) 
+  ├─🏷️System: TurnLight_ALLON (SID: 81)
       ├─📊 nClass: 0
       ├─📊 portAsr: 0 (In: 0 Out: 0 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
       ├─📊 M1: 0 
-  ├─    🏷️ System: TurnLight_FLDouble_Open (SID: 92) 
+  ├─🏷️System: TurnLight_FLDouble_Open (SID: 92)
       ├─📊 nClass: 0
       ├─📊 portAsr: 1 (In: 1 Out: 0 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
       ├─📊 M1: 0 
       ├─🔌 Port: In1                                 (SID:  226, Type: C-S , IO: In )
-  ├─    🏷️ System: TurnLight_FLOFF_Short (SID: 103) 
+  ├─🏷️System: TurnLight_FLOFF_Short (SID: 103)
       ├─📊 nClass: 0
       ├─📊 portAsr: 0 (In: 0 Out: 0 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
       ├─📊 M1: 0 
-  ├─    🏷️ System: TurnLight_FRDouble_Open (SID: 114) 
+  ├─🏷️System: TurnLight_FRDouble_Open (SID: 114)
       ├─📊 nClass: 0
       ├─📊 portAsr: 0 (In: 0 Out: 0 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
       ├─📊 M1: 0 
-  ├─    🏷️ System: TurnLight_FROFF_Short (SID: 125) 
+  ├─🏷️System: TurnLight_FROFF_Short (SID: 125)
       ├─📊 nClass: 0
       ├─📊 portAsr: 0 (In: 0 Out: 0 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
       ├─📊 M1: 0 
-  ├─    🏷️ System: TurnLight_LeftLong (SID: 136) 
+  ├─🏷️System: TurnLight_LeftLong (SID: 136)
       ├─📊 nClass: 0
       ├─📊 portAsr: 2 (In: 1 Out: 1 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
       ├─📊 M1: 0 
       ├─🔌 Port: IGN_Status_u8_signal_read           (SID:  232, Type: C-S , IO: In )
       ├─🔌 Port: Out1                                (SID:  231, Type: C-S , IO: Out)
-  ├─    🏷️ System: TurnLight_LeftLong1 (SID: 147) 
+  ├─🏷️System: TurnLight_LeftLong1 (SID: 147)
       ├─📊 nClass: 0
       ├─📊 portAsr: 0 (In: 0 Out: 0 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
       ├─📊 M1: 0 
-  ├─    🏷️ System: TurnLight_LeftShort (SID: 158) 
+  ├─🏷️System: TurnLight_LeftShort (SID: 158)
       ├─📊 nClass: 0
       ├─📊 portAsr: 2 (In: 1 Out: 1 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
@@ -189,28 +189,27 @@
       ├─🔌 Port: IGN_Status                          (SID:  227, Type: C-S , IO: In )
       │   └─🔗  [→] Out1 (SID: 230)
       ├─🔌 Port: Out1                                (SID:  230, Type: C-S , IO: Out)
-      │   └─🔗  [←] IGN_Status (SID: 227)
-  ├─    🏷️ System: TurnLight_RLDouble_Open (SID: 169) 
+  ├─🏷️System: TurnLight_RLDouble_Open (SID: 169)
       ├─📊 nClass: 0
       ├─📊 portAsr: 0 (In: 0 Out: 0 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
       ├─📊 M1: 0 
-  ├─    🏷️ System: TurnLight_RLOFF_Short (SID: 180) 
+  ├─🏷️System: TurnLight_RLOFF_Short (SID: 180)
       ├─📊 nClass: 0
       ├─📊 portAsr: 0 (In: 0 Out: 0 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
       ├─📊 M1: 0 
-  ├─    🏷️ System: TurnLight_RRDouble_Open (SID: 191) 
+  ├─🏷️System: TurnLight_RRDouble_Open (SID: 191)
       ├─📊 nClass: 0
       ├─📊 portAsr: 0 (In: 0 Out: 0 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
       ├─📊 M1: 0 
-  ├─    🏷️ System: TurnLight_RRDouble_Short (SID: 202) 
+  ├─🏷️System: TurnLight_RRDouble_Short (SID: 202)
       ├─📊 nClass: 0
       ├─📊 portAsr: 0 (In: 0 Out: 0 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
       ├─📊 M1: 0 
-  └─    🏷️ System: TurnLight_RightShort (SID: 213) 
+  └─🏷️System: TurnLight_RightShort (SID: 213)
       ├─📊 nClass: 0
       ├─📊 portAsr: 0 (In: 0 Out: 0 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )

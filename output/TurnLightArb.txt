@@ -1,5 +1,5 @@
-📦 系统结构分析结果如下：
-📦🏷️ System: Runnable_10ms_sys (SID: 4) 
+📦 The results of the system architecture analysis are as follows：
+📦🏷️System: Runnable_10ms_sys (SID: 4)
   ├─📊 nClass: 0
   ├─📊 portAsr: 4 (In: 0 Out: 4 )
   ├─📊 portSim: 0 (In: 0 Out: 0 )
@@ -12,7 +12,7 @@
   │   └─🔗  [←] TurnLightOutArb (SID: 33)
   ├─🔌 Port: TurnLapme_RR_Out_u8_Signal_write    (SID:   13, Type: S-R , IO: Out)
   │   └─🔗  [←] TurnLightOutArb (SID: 33)
-  └─    📦 System: TurnLightOutArb (SID: 33) 
+  └─📦System: TurnLightOutArb (SID: 33)
       ├─📊 nClass: 0
       ├─📊 portAsr: 11 (In: 7 Out: 4 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )

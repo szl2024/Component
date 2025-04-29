@@ -11,11 +11,11 @@ import (
 	"path/filepath"
 )
 
-// AnalyzeRootXML 分析根 XML 文件
+// Analyze the root XML file
 func AnalyzeRootXML(xmlPath string, modelName string) error {
 	file, err := os.Open(xmlPath)
 	if err != nil {
-		return fmt.Errorf("读取XML文件失败: %v", err)
+		return fmt.Errorf("Failed to read XML file: %v", err)
 	}
 	defer file.Close()
 
@@ -40,7 +40,7 @@ func AnalyzeRootXML(xmlPath string, modelName string) error {
 		switch se := t.(type) {
 		case xml.StartElement:
 			if se.Name.Local == "Block" {
-				// 重置状态
+				// reset state
 				inSubsystem = false
 				hasValidPorts = false
 				currentSystemRef = ""
@@ -50,7 +50,7 @@ func AnalyzeRootXML(xmlPath string, modelName string) error {
 				portCountsOut = 0
 				portsParam = ""
 
-				// 收集基础属性
+				// Collect basic attributes
 				for _, attr := range se.Attr {
 					switch attr.Name.Local {
 					case "Name":
@@ -114,22 +114,17 @@ func AnalyzeRootXML(xmlPath string, modelName string) error {
 		case xml.EndElement:
 			if se.Name.Local == "Block" && inSubsystem {
 				if hasValidPorts && currentSystemRef != "" {
-					// 创建有效系统实例
+					// Create an effective system instance
 					currentSystem := Public_Data.NewSystemFromBlock(
 						blockName,
 						blockSID,
 						portCountsIn,
 						portCountsOut,
+						true,
 					)
-					// fmt.Printf("  创建有效系统 | SID:%d | Name:%-20s | 输入:%-2d 输出:%-2d\n",
-					// 	currentSystem.SID, currentSystem.Name, currentSystem.Inputs, currentSystem.Outputs)
-
-					// 生成路径并递归分析
 					newPath := generateNewPath(xmlPath, currentSystemRef)
-					//fmt.Printf("  生成路径: %s\n", newPath)
 					modelName := filepath.Base(filepath.Dir(filepath.Dir(filepath.Dir(xmlPath))))
 					Subsystem_Analysis.AnalyzeSubSystemXML(newPath, currentSystem, modelName)
-
 				}
 				inSubsystem = false
 			}
@@ -138,7 +133,7 @@ func AnalyzeRootXML(xmlPath string, modelName string) error {
 	return nil
 }
 
-// parsePortsParam 解析Ports参数
+// Analyze Ports parameters
 func parsePortsParam(portsStr string) (int, int, error) {
 	trimmed := strings.Trim(strings.TrimSpace(portsStr), "[]")
 	if trimmed == "" {
@@ -160,7 +155,7 @@ func parsePortsParam(portsStr string) (int, int, error) {
 	return in, out, nil
 }
 
-// generateNewPath 路径生成函数
+// Path generation function
 func generateNewPath(originalPath, systemRef string) string {
 	return filepath.Join(
 		filepath.Dir(originalPath),

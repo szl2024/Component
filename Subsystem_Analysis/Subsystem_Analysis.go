@@ -9,16 +9,15 @@ import (
 	"strings"
 	"Project/component/Public_Data"
 	"Project/component/Port_Analysis"
-	//"Project/component/Class_Analysis"
+	"bufio"
 	"Project/component/Connect_Analysis"
 )
 const portNameWidth = 35
-
 const blockNameWidth = 35
-const blockInfoWidth = 40 // 控制括号内长度对齐
+const blockInfoWidth = 40 //Control the alignment of the length within parentheses
 
 type (
-	// 解析上下文状态
+	// Analyze the contextual state
 	parserState struct {
 		currentBlock     blockState
 		currentLine      lineState
@@ -43,7 +42,7 @@ type (
 	lineState struct {
 		Src      int
 		Dst      int
-		Branches []int  // ✅ 添加：分支连接目标
+		Branches []int  // Branch connection target
 	}
 	
 
@@ -54,7 +53,7 @@ type (
 	}
 )
 
-// AnalyzeSubSystemXML 重构后的主分析函数
+
 func AnalyzeSubSystemXML(xmlPath string, rootSystem *Public_Data.System, modelName string) error{
 	queue := []struct {
 		path string
@@ -71,34 +70,40 @@ func AnalyzeSubSystemXML(xmlPath string, rootSystem *Public_Data.System, modelNa
 	}
 	
 	outputPath := filepath.Join(Public_Data.OutputDir, modelName+".txt")
-
 	var builder strings.Builder
-	builder.WriteString(fmt.Sprintf("📦 系统结构分析结果如下：\n"))
+	builder.WriteString(fmt.Sprintf("📦 The results of the system architecture analysis are as follows：\n"))
 	printSystemInfoToWriter(rootSystem, rootSystem, "", &builder)
 
+	// Create output file
 	f, err := os.Create(outputPath)
-if err != nil {
-	fmt.Printf("❌ 创建文件失败: %v\n", err)
-	return err
-}
-defer f.Close()
+	if err != nil {
+		fmt.Printf("❌ Failed to create file: %v\n", err)
+		return err
+	}
+	defer func() {
+    	if cerr := f.Close(); cerr != nil {
+        	fmt.Printf("❌ Failed to close file: %v\n", cerr)
+    	}
+	}()
 
-_, err = f.WriteString(builder.String())
-if err != nil {
-	fmt.Printf("❌ 写入模型结构失败: %v\n", err)
-	return err
-}
-fmt.Println("\n=== 系统统计信息 ===")
+	writer := bufio.NewWriter(f)
+	defer writer.Flush()
 
+	_, err = writer.WriteString(builder.String())
+	if err != nil {
+		fmt.Printf("❌ Failed to write model structure: %v\n", err)
+		return err
+	}
+	fmt.Println("\n=== System statistics ===")
 	return nil
 }
 
-// 处理单个系统文件
+// Processing individual system files
 func processSystemFile(path string, system *Public_Data.System, queue *[]struct{path string; sys *Public_Data.System}) error {
 	
 	file, err := os.Open(path)
 	if err != nil {
-		return fmt.Errorf("打开文件失败: %w", err)
+		return fmt.Errorf("Fail to open file: %w", err)
 	}
 	defer file.Close()
 
@@ -127,7 +132,7 @@ func processSystemFile(path string, system *Public_Data.System, queue *[]struct{
 	return nil
 }
 
-// 处理开始标签
+// Processing Start Label
 func (s *parserState) handleStartElement(elem xml.StartElement) {
 	s.elementStack = append(s.elementStack, elem)
 	
@@ -145,7 +150,7 @@ func (s *parserState) handleStartElement(elem xml.StartElement) {
 	}
 }
 
-// 处理结束标签
+// Processing End Label
 func (s *parserState) handleEndElement(elem xml.EndElement, queue *[]struct{path string; sys *Public_Data.System}, currentPath string) {
 	if len(s.elementStack) > 0 {
 		s.elementStack = s.elementStack[:len(s.elementStack)-1]
@@ -161,19 +166,17 @@ func (s *parserState) handleEndElement(elem xml.EndElement, queue *[]struct{path
 	}
 }
 
-// 处理字符数据
+// Process character data
+
 func (s *parserState) handleCharData(data xml.CharData) {
-	content := strings.TrimSpace(string(data))
-	if content != "" {
-		s.currentPContent = content
-	}
+	s.currentPContent = strings.TrimSpace(string(data))
 }
 
-// 初始化块状态
+// Initialize block status
 func (s *parserState) initBlockState(elem xml.StartElement) {
 	s.currentBlock = blockState{}
 	s.hasPortAttr = false
-	s.portsFromList = nil // ✅ 清空 portsFromList
+	s.portsFromList = nil 
 	for _, attr := range elem.Attr {
 		switch attr.Name.Local {
 		case "Name":
@@ -191,7 +194,7 @@ func (s *parserState) initBlockState(elem xml.StartElement) {
 }
 
 
-// 解析端口数量
+// Analyze the number of ports
 func (s *parserState) parsePortCounts(elem xml.StartElement) {
 	for _, attr := range elem.Attr {
 		switch attr.Name.Local {
@@ -205,7 +208,7 @@ func (s *parserState) parsePortCounts(elem xml.StartElement) {
 	}
 }
 
-// 初始化P标签状态
+// Initialize P tag status
 func (s *parserState) initPState(elem xml.StartElement) {
 	s.currentPContent = ""
 	for _, attr := range elem.Attr {
@@ -215,7 +218,7 @@ func (s *parserState) initPState(elem xml.StartElement) {
 	}
 }
 
-// 解析系统引用
+// Analyze system references
 func (s *parserState) parseSystemRef(elem xml.StartElement) {
 	for _, attr := range elem.Attr {
 		if attr.Name.Local == "Ref" {
@@ -224,7 +227,7 @@ func (s *parserState) parseSystemRef(elem xml.StartElement) {
 	}
 }
 
-// 处理块结束
+// End of processing block
 func (s *parserState) processBlock(queue *[]struct{ path string; sys *Public_Data.System }, currentPath string) {
 	switch s.currentBlock.Type {
 	case "Inport", "Outport":
@@ -232,27 +235,29 @@ func (s *parserState) processBlock(queue *[]struct{ path string; sys *Public_Dat
 			s.currentBlock.Name,
 			s.currentBlock.SID,
 			s.currentBlock.Type,
-			s.hasPortAttr, // 使用上面设置的标志
+			s.hasPortAttr, 
 			s.currentSystem,
 		)
 
 	case "SubSystem":
-		// 创建子系统
+		// Create subsystem
 		subSystem := Public_Data.NewSystemFromBlock(
 			s.currentBlock.Name,
 			s.currentBlock.SID,
 			s.currentBlock.PortCounts.In,
 			s.currentBlock.PortCounts.Out,
+			true,   
 		)
+		
 
-		// 设置 Type 字段，区分 System 和 Class
+		// Set the Type field to distinguish between System and Class
 		if s.currentBlock.IsAtomic {
-			subSystem.Type = "system" // 如果是原子子系统，设为 system
+			subSystem.Type = "system" // If it is an atomic subsystem, set it as system
 		} else {
-			subSystem.Type = "class" // 否则设为 class
+			subSystem.Type = "class" // Otherwise, set as class
 		}
 
-		// 如果有系统引用，递归读取其 xml 文件
+		// If there is a system reference, recursively read its XML file
 		if s.currentBlock.SystemRef != "" {
 			newPath := generateNewPath(currentPath, s.currentBlock.SystemRef)
 			*queue = append(*queue, struct {
@@ -264,11 +269,11 @@ func (s *parserState) processBlock(queue *[]struct{ path string; sys *Public_Dat
 			})
 		}
 
-		// 将 SubSystem 添加到父系统的 System 列表中
+		// Add SubSystem to the System list of the parent system
 		s.currentSystem.System = append(s.currentSystem.System, subSystem)
 
 	default:
-		// 普通功能 Block，如 Terminator、Gain 等
+		// Common functional blocks, such as Terminator, Gain, etc
 		s.currentSystem.Block = append(s.currentSystem.Block, &Public_Data.Block{
 			Name: strings.TrimSpace(s.currentBlock.Name),
 			SID:  s.currentBlock.SID,
@@ -278,15 +283,16 @@ func (s *parserState) processBlock(queue *[]struct{ path string; sys *Public_Dat
 }
 
 
-// 修改后的processLine方法
+// Analyze the information of the Link 
+// (such as which blocks the Port port is connected to, or which block's output is connected to the Port port)
 func (s *parserState) processLine() {
 	if s.currentLine.Src != 0 {
-		// 主线目标连接
+		// Main target connection
 		if s.currentLine.Dst != 0 {
 			Connect_Analysis.ConnectAnalysis(s.currentLine.Src, s.currentLine.Dst, s.currentSystem)
 		}
 	
-		// 所有分支目标连接
+		// All branch target connections
 		for _, branchDst := range s.currentLine.Branches {
 			Connect_Analysis.ConnectAnalysis(s.currentLine.Src, branchDst, s.currentSystem)
 		}
@@ -295,9 +301,7 @@ func (s *parserState) processLine() {
 	
 }
 
-// 处理连线结束
-
-// 处理P标签内容
+// Process the content of P tags
 func (s *parserState) processPContent() {
 	switch s.currentPName {
 	case "Src":
@@ -326,7 +330,7 @@ func (s *parserState) processPContent() {
 }
 
 
-// 路径生成工具函数
+// Path generation tool function
 func generateNewPath(originalPath, systemRef string) string {
 	return filepath.Join(
 		filepath.Dir(originalPath),
@@ -334,14 +338,14 @@ func generateNewPath(originalPath, systemRef string) string {
 	)
 }
 
-// ID提取工具函数
+// ID extraction tool function
 func extractID(content string) int {
 	parts := strings.Split(content, "#")
 	if len(parts) == 0 {
 		return 0
 	}
 
-	// ✅ 对 SID 部分再做一次拆分处理
+	// Split the SID part again
 	sidPart := parts[0]
 	sidSubParts := strings.Split(sidPart, "::")
 	lastSID := sidSubParts[len(sidSubParts)-1]
@@ -352,59 +356,60 @@ func extractID(content string) int {
 
 
 func printSystemInfoToWriter(system *Public_Data.System, currentSystem *Public_Data.System, indent string, writer *strings.Builder) {
- // 根据 Type 字段判断输出的符号
- systemPrefix := ""
- if currentSystem.Type == "class" {
-	 systemPrefix = "🏷️"
- } else if currentSystem.Type == "system" {
-	 systemPrefix = "📦"
- } else {
-	 systemPrefix = "📦🏷️"
- }
+	// Determine the output symbol based on the Type field
+ 	systemPrefix := ""
+ 	if currentSystem.Type == "class" {
+		systemPrefix = "🏷️"
+ 	} else if currentSystem.Type == "system" {
+	 	systemPrefix = "📦"
+ 	} else {
+	 	systemPrefix = "📦🏷️"
+ 	}
 
- // 写入系统和统计信息
- writer.WriteString(fmt.Sprintf("%s%s System: %s (SID: %d) \n", indent, systemPrefix, currentSystem.Name, currentSystem.SID))
-
- // 统计端口数量
- portCount := len(currentSystem.Port)
- // 统计子节点中 type 为 "class" 的数量
- classCount := 0
- // 统计子节点中 type 为 "class" 的 Inputs 和 Outputs 的总和
- classInputsSum := 0
- classOutputsSum := 0
-
- for _, subSys := range currentSystem.System {
-	 if subSys.Type == "class" {
-		 classCount++
-		 classInputsSum += subSys.Inputs
-		 classOutputsSum += subSys.Outputs
-	 }
- }
-
- // 统计端口的 IO 类型
- inPortCount := 0
- outPortCount := 0
- for _, port := range currentSystem.Port {
-	 if port.IO == "In" {
-		 inPortCount++
-	 } else if port.IO == "Out" {
-		 outPortCount++
-	 }
- }
+ 	// Write system and statistical information
+	writer.WriteString(fmt.Sprintf("%sSystem: %s (SID: %d)\n", systemPrefix, currentSystem.Name, currentSystem.SID))
 
 
-    // 输出统计信息
+ 	// Count the number of ports
+ 	portCount := len(currentSystem.Port)
+ 	// Count the number of child nodes with type 'class'
+ 	classCount := 0
+ 	// Count the total sum of inputs and outputs of type "class" in the child nodes
+ 	classInputsSum := 0
+ 	classOutputsSum := 0
+
+ 	for _, subSys := range currentSystem.System {
+		if subSys.Type == "class" {
+			classCount++
+			classInputsSum += subSys.Inputs
+		 	classOutputsSum += subSys.Outputs
+	 	}
+ 	}
+
+ 	// Count the IO types of ports
+ 	inPortCount := 0
+ 	outPortCount := 0
+ 	for _, port := range currentSystem.Port {
+		if port.IO == "In" {
+			inPortCount++
+	 	} else if port.IO == "Out" {
+			outPortCount++
+	 	}
+ 	}	
+
+
+    // Output statistical information
 	writer.WriteString(fmt.Sprintf("%s  ├─📊 nClass: %d\n", indent, classCount))
     writer.WriteString(fmt.Sprintf("%s  ├─📊 portAsr: %d (In: %d Out: %d )\n", indent, portCount,inPortCount, outPortCount))
     writer.WriteString(fmt.Sprintf("%s  ├─📊 portSim: %d (In: %d Out: %d )\n", indent, classInputsSum + classOutputsSum, classInputsSum, classOutputsSum))
 	writer.WriteString(fmt.Sprintf("%s  ├─📊 M1: %d \n", indent, classCount * portCount * ( classInputsSum + classOutputsSum )))
   
-	// 输出端口信息
+	// Output port information
 	for _, port := range currentSystem.Port {
 		writer.WriteString(fmt.Sprintf("%s  ├─🔌 Port: %-*s (SID: %4d, Type: %-4s, IO: %-3s)\n",
 			indent, portNameWidth, port.Name, port.SID, port.PortType, port.IO))
 
-		// 输出连接信息
+		// Output connection information
 		if len(port.Connection) > 0 {
 			var targets []string
 			for _, conn := range port.Connection {
@@ -430,7 +435,7 @@ func printSystemInfoToWriter(system *Public_Data.System, currentSystem *Public_D
 
 
 
-	// 递归输出子系统信息
+	// Recursive output subsystem information
 	for i, subSys := range currentSystem.System {
 		last := (i == len(currentSystem.System)-1)
 		prefix := "  └─"

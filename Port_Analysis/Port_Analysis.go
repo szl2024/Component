@@ -7,7 +7,7 @@ import (
 
 
 
-// 修改后的PortAnalysis函数
+
 func PortAnalysis(name string, sid int, blockType string, hasPortAttribute bool, currentSystem *Public_Data.System) {
 	portType := "C-S"
 	if hasPortAttribute {
