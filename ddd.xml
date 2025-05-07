@@ -1,0 +1,20 @@
+<Block BlockType="SubSystem" Name="Fn_AcpcSte" SID="1658">
+    <PortCounts in="2" out="1"/>
+    <P Name="Position">[-76,112,180,283]</P>
+    <P Name="ZOrder">36013</P>
+    <P Name="TeratAsAtomicUnit">on</P>//system
+    <P Name="RTWSystemCode">Reusable function</P>
+    <P Name="RTWFcnNameOpte">Use subsystem name</P>
+    <PortProperties>
+        <Port Type="out" Index="1">
+            <P Name="PropagatedSognals">Acpc_DeAcpcSte</P>
+        </Port>
+    </PortProperties>
+    <System Ref="system_244"/>
+</Block>
+
+    <PortProperties>
+        <Port Type="out" Index="1">
+            <P Name="PropagatedSognals">Acpc_DeAcpcSte</P>
+        </Port>
+    </PortProperties>

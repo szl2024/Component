@@ -15,7 +15,6 @@
     <PortCounts in="2" out="1"/>
     <P Name="Position">[205, 99, 305, 141]</P>
     <P Name="ZOrder">2</P>
-    <P Name="LibrarySourceProduct" Ref="bdmxdata:LibrarySourceProduct_26"/>
     <P Name="ContentPreviewEnabled">on</P>
     <System Ref="system_26"/>
   </Block>

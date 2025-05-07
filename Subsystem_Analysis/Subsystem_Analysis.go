@@ -403,7 +403,16 @@ func printSystemInfoToWriter(system *Public_Data.System, currentSystem *Public_D
     writer.WriteString(fmt.Sprintf("%s  ├─📊 portAsr: %d (In: %d Out: %d )\n", indent, portCount,inPortCount, outPortCount))
     writer.WriteString(fmt.Sprintf("%s  ├─📊 portSim: %d (In: %d Out: %d )\n", indent, classInputsSum + classOutputsSum, classInputsSum, classOutputsSum))
 	writer.WriteString(fmt.Sprintf("%s  ├─📊 M1: %d \n", indent, classCount * portCount * ( classInputsSum + classOutputsSum )))
-  
+	// ✅ 新增：输出子系统（组件）之间的连接信息
+if len(currentSystem.ComponentConnections) > 0 {
+	writer.WriteString(fmt.Sprintf("%s  ├─🔗 子系统连接:\n", indent))
+	for _, conn := range currentSystem.ComponentConnections {
+		srcName := findBlockNameBySID(system, conn.SrcPortSID)
+		dstName := findBlockNameBySID(system, conn.DstBlockSID)
+		writer.WriteString(fmt.Sprintf("%s  │   └─📦 %s (SID: %d) → 📦 %s (SID: %d)\n",
+			indent, srcName, conn.SrcPortSID, dstName, conn.DstBlockSID))
+	}
+}
 	// Output port information
 	for _, port := range currentSystem.Port {
 		writer.WriteString(fmt.Sprintf("%s  ├─🔌 Port: %-*s (SID: %4d, Type: %-4s, IO: %-3s)\n",
@@ -432,6 +441,7 @@ func printSystemInfoToWriter(system *Public_Data.System, currentSystem *Public_D
 			}
 		}
 	}
+
 
 
 

@@ -45,6 +45,8 @@
       ├─📊 portAsr: 6 (In: 5 Out: 1 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
       ├─📊 M1: 0 
+      ├─🔗 子系统连接:
+      │   └─📦 HazardCtrlLogic (SID: 66) → 📦 TurnLightSelector (SID: 69)
       ├─🔌 Port: HazardSw                            (SID:  101, Type: C-S , IO: In )
       │   └─🔗  [→] (Block) SFunction (SID: 107)
       ├─🔌 Port: CrashIntensity                      (SID:  102, Type: S-R , IO: In )
@@ -62,6 +64,9 @@
       ├─📊 portAsr: 6 (In: 4 Out: 2 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
       ├─📊 M1: 0 
+      ├─🔗 子系统连接:
+      │   └─📦 TurnLightCtrlLogic (SID: 67) → 📦 TurnLightSelector (SID: 69)
+      │   └─📦 TurnLightCtrlLogic (SID: 67) → 📦 TurnLightSelector (SID: 69)
       ├─🔌 Port: IGN_Status                          (SID:  101, Type: C-S , IO: In )
       │   └─🔗  [→] (Block) SFunction (SID: 107)
       ├─🔌 Port: TurnLapmSW                          (SID:  102, Type: S-R , IO: In )
@@ -79,6 +84,15 @@
       ├─📊 portAsr: 17 (In: 9 Out: 8 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
       ├─📊 M1: 0 
+      ├─🔗 子系统连接:
+      │   └─📦 TurnLightDiag (SID: 68) → 📦 TurnLight_RRDouble_Short (SID: 202)
+      │   └─📦 TurnLightDiag (SID: 68) → 📦 TurnLight_RRDouble_Open (SID: 191)
+      │   └─📦 TurnLightDiag (SID: 68) → 📦 (Block) Demux (SID: 114)
+      │   └─📦 TurnLightDiag (SID: 68) → 📦 TurnLight_FLDouble_Open (SID: 92)
+      │   └─📦 TurnLightDiag (SID: 68) → 📦 EmergencyBrakeLight (SID: 103)
+      │   └─📦 TurnLightDiag (SID: 68) → 📦 TurnLight_FROFF_Short (SID: 125)
+      │   └─📦 TurnLightDiag (SID: 68) → 📦 TurnLight_RLOFF_Short (SID: 180)
+      │   └─📦 TurnLightDiag (SID: 68) → 📦 TurnLight_RLDouble_Open (SID: 169)
       ├─🔌 Port: TurnLightFb_FL                      (SID:  101, Type: C-S , IO: In )
       │   └─🔗  [→] (Block) SFunction (SID: 121)
       ├─🔌 Port: TurnLightFb_FR                      (SID:  102, Type: S-R , IO: In )
@@ -118,6 +132,13 @@
       ├─📊 portAsr: 10 (In: 3 Out: 7 )
       ├─📊 portSim: 0 (In: 0 Out: 0 )
       ├─📊 M1: 0 
+      ├─🔗 子系统连接:
+      │   └─📦 TurnLightSelector (SID: 69) → 📦 TurnLight_LeftLong (SID: 136)
+      │   └─📦 TurnLightSelector (SID: 69) → 📦 TurnLight_ALLON (SID: 81)
+      │   └─📦 TurnLightSelector (SID: 69) → 📦 TurnLight_ALLOFF (SID: 70)
+      │   └─📦 TurnLightSelector (SID: 69) → 📦 TurnLight_LeftShort (SID: 158)
+      │   └─📦 TurnLightSelector (SID: 69) → 📦 TurnLight_RightShort (SID: 213)
+      │   └─📦 TurnLightSelector (SID: 69) → 📦 TurnLight_LeftLong1 (SID: 147)
       ├─🔌 Port: TurnLightSwRqst                     (SID:  101, Type: C-S , IO: In )
       │   └─🔗  [→] (Block) SFunction (SID: 113)
       ├─🔌 Port: TurnLightMode                       (SID:  109, Type: S-R , IO: In )

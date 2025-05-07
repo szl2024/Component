@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <System>
-  <P Name="Location">[-1, -8, 2561, 1393]</P>
+  <P Name="Location">[1280, 0, 2560, 1392]</P>
+  <P Name="Open">on</P>
   <P Name="ZoomFactor">300</P>
   <Block BlockType="Inport" Name="In1" SID="2">
     <P Name="Position">[110, 93, 140, 107]</P>
@@ -34,7 +35,8 @@
     <PortCounts in="2" out="1"/>
     <P Name="Position">[265, 89, 365, 131]</P>
     <P Name="ZOrder">5</P>
-    <P Name="LibrarySourceProduct" Ref="bdmxdata:LibrarySourceProduct_8"/>
+    <P Name="PermitHierarchicalResolution">ExplicitOnly</P>
+    <P Name="TreatAsAtomicUnit">on</P>
     <P Name="ContentPreviewEnabled">on</P>
     <System Ref="system_8"/>
   </Block>
@@ -42,7 +44,6 @@
     <PortCounts in="2" out="1"/>
     <P Name="Position">[265, 149, 365, 191]</P>
     <P Name="ZOrder">7</P>
-    <P Name="LibrarySourceProduct" Ref="bdmxdata:LibrarySourceProduct_23"/>
     <P Name="ContentPreviewEnabled">on</P>
     <System Ref="system_23"/>
   </Block>
@@ -50,13 +51,13 @@
     <PortCounts in="2" out="1"/>
     <P Name="Position">[265, 209, 365, 251]</P>
     <P Name="ZOrder">8</P>
-    <P Name="LibrarySourceProduct" Ref="bdmxdata:LibrarySourceProduct_34"/>
     <P Name="ContentPreviewEnabled">on</P>
     <System Ref="system_34"/>
   </Block>
-  <Block BlockType="Outport" Name="Out1" SID="3">
+  <Block BlockType="Outport" Name="test" SID="3">
     <P Name="Position">[475, 103, 505, 117]</P>
     <P Name="ZOrder">-2</P>
+    <P Name="LockScale">on</P>
   </Block>
   <Block BlockType="Outport" Name="Out2" SID="7">
     <P Name="Position">[475, 153, 505, 167]</P>

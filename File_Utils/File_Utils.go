@@ -142,7 +142,7 @@ func copyFile(src, dst string) error {
 // Get subdirectories
 func getSubDirectories(path string) ([]string, error) {
 	var dirs []string
-	entries, err := os.ReadDir(path)
+	entries, err := ioutil.ReadDir(path)
 	if err != nil {
 		return nil, err
 	}
@@ -154,6 +154,7 @@ func getSubDirectories(path string) ([]string, error) {
 	}
 	return dirs, nil
 }
+
 
 // Extract zip file
 func unzip(src, dest string) error {

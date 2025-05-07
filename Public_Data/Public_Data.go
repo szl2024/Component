@@ -31,14 +31,16 @@ type Port struct {
 }
 
 type System struct {
-    Name     string
-    SID      int
-    Inputs   int
-    Outputs  int
-    Type    string
-    Port     []*Port
-    System   []*System 
-    Block []*Block 
+	Name    string
+	SID     int
+	Inputs  int
+	Outputs int
+	Type    string
+	Port    []*Port
+	System  []*System
+	Block   []*Block
+
+	ComponentConnections []*Connection // ✅ 新增：记录子系统之间的连接
 }
 
 func NewSystemFromBlock(name string, sid int, inputs int, outputs int, register bool) *System {
