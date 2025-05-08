@@ -430,19 +430,21 @@ func findBlockNameBySID(system *Public_Data.System, sid int) string {
 			return port.Name
 		}
 	}
+	
 	for _, block := range system.Block {
-		if block.SID == sid {
-			cleanName := strings.ReplaceAll(block.Name, "\n", " ")
-			cleanName = strings.ReplaceAll(cleanName, "\r", "")
-			return fmt.Sprintf("(模块) %s", strings.TrimSpace(cleanName))
-		}
-	}
+        if block.SID == sid {
+        
+            cleanName := strings.ReplaceAll(block.Name, "\n", " ")
+            cleanName = strings.ReplaceAll(cleanName, "\r", "")
+            return fmt.Sprintf("(模块) %s", strings.TrimSpace(cleanName))
+        }
+    }
 	if system.SID == sid {
 		return system.Name
 	}
 	for _, sub := range system.System {
 		name := findBlockNameBySID(sub, sid)
-		if name != "" && !strings.HasPrefix(name, "Unknown") {
+		if name != "" && !strings.HasPrefix(name, "未知") {
 			return name
 		}
 	}
