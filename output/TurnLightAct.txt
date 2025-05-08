@@ -41,8 +41,7 @@
       │   └─🔗  [←] (Block) TurnLampActuator (SID: 73)
       ├─🔌 Port: Com_CAN_LA_St_DirectionLampL        (SID:   51, Type: S-R , IO: Out)
       │   └─🔗  [←] (Block) TurnLampActuator (SID: 73)
-      └─📦System: Function-Call
-Subsystem (SID: 106)
+      └─📦System: Function-Call Subsystem (SID: 106)
           ├─📊 nClass: 0
           ├─📊 portAsr: 1 (In: 1 Out: 0 )
           ├─📊 portSim: 0 (In: 0 Out: 0 )
@@ -60,8 +59,7 @@ Subsystem (SID: 106)
       │   └─🔗  [←] (Block) TurnLampActuator1 (SID: 75)
       ├─🔌 Port: TurnLampCtrlCmd_FR                  (SID:   55, Type: S-R , IO: Out)
       │   └─🔗  [←] (Block) TurnLampActuator1 (SID: 75)
-      └─📦System: Function-Call
-Subsystem1 (SID: 111)
+      └─📦System: Function-Call Subsystem1 (SID: 111)
           ├─📊 nClass: 0
           ├─📊 portAsr: 1 (In: 1 Out: 0 )
           ├─📊 portSim: 0 (In: 0 Out: 0 )
@@ -81,8 +79,7 @@ Subsystem1 (SID: 111)
       │   └─🔗  [←] (Block) TurnLampActuator (SID: 74)
       ├─🔌 Port: Com_CAN_LA_St_DirectionLampR        (SID:   63, Type: S-R , IO: Out)
       │   └─🔗  [←] (Block) TurnLampActuator (SID: 74)
-      └─📦System: Function-Call
-Subsystem2 (SID: 115)
+      └─📦System: Function-Call Subsystem2 (SID: 115)
           ├─📊 nClass: 0
           ├─📊 portAsr: 1 (In: 1 Out: 0 )
           ├─📊 portSim: 0 (In: 0 Out: 0 )
@@ -100,8 +97,7 @@ Subsystem2 (SID: 115)
       │   └─🔗  [←] (Block) TurnLampActuator1 (SID: 76)
       ├─🔌 Port: Counter_RR                          (SID:   68, Type: S-R , IO: Out)
       │   └─🔗  [←] (Block) TurnLampActuator1 (SID: 76)
-      └─📦System: Function-Call
-Subsystem3 (SID: 119)
+      └─📦System: Function-Call Subsystem3 (SID: 119)
           ├─📊 nClass: 0
           ├─📊 portAsr: 1 (In: 1 Out: 0 )
           ├─📊 portSim: 0 (In: 0 Out: 0 )

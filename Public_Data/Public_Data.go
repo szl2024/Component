@@ -40,7 +40,7 @@ type System struct {
 	System  []*System
 	Block   []*Block
 
-	ComponentConnections []*Connection // ✅ 必须加上这一行
+	ComponentConnections []*Connection 
 }
 
 

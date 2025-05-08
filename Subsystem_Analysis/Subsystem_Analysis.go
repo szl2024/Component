@@ -367,7 +367,11 @@ func printSystemInfoToWriter(system *Public_Data.System, currentSystem *Public_D
  	}
 
  	// Write system and statistical information
-	writer.WriteString(fmt.Sprintf("%sSystem: %s (SID: %d)\n", systemPrefix, currentSystem.Name, currentSystem.SID))
+	 cleanName := strings.ReplaceAll(currentSystem.Name, "\n", " ")
+	 cleanName = strings.ReplaceAll(cleanName, "\r", "")
+	 
+	 writer.WriteString(fmt.Sprintf("%sSystem: %s (SID: %d)\n", systemPrefix, cleanName, currentSystem.SID))
+
 
 
  	// Count the number of ports
@@ -404,16 +408,25 @@ func printSystemInfoToWriter(system *Public_Data.System, currentSystem *Public_D
     writer.WriteString(fmt.Sprintf("%s  ├─📊 portSim: %d (In: %d Out: %d )\n", indent, classInputsSum + classOutputsSum, classInputsSum, classOutputsSum))
 	writer.WriteString(fmt.Sprintf("%s  ├─📊 M1: %d \n", indent, classCount * portCount * ( classInputsSum + classOutputsSum )))
 	
-	// ✅ 输出当前系统发起的子系统连接（组件连接）
-if len(currentSystem.ComponentConnections) > 0 {
-	writer.WriteString(fmt.Sprintf("%s  ├─🔗 子系统连接:\n", indent))
-	for _, conn := range currentSystem.ComponentConnections {
-		srcName := findBlockNameBySID(system, conn.SrcPortSID)
-		dstName := findBlockNameBySID(system, conn.DstBlockSID)
-		writer.WriteString(fmt.Sprintf("%s  │   └─📦 %s (SID: %d) → 📦 %s (SID: %d)\n",
-			indent, srcName, conn.SrcPortSID, dstName, conn.DstBlockSID))
+	// Output the subsystem connections (component connections) initiated by the current system
+	if len(currentSystem.ComponentConnections) > 0 {
+		writer.WriteString(fmt.Sprintf("%s  ├─🧩 Subsystem connection:\n", indent))
+		for _, conn := range currentSystem.ComponentConnections {
+			srcName := findBlockNameBySID(system, conn.SrcPortSID)
+			dstName := findBlockNameBySID(system, conn.DstBlockSID)
+	
+			// 判断目标组件类型
+			dstType := findBlockTypeBySID(system, conn.DstBlockSID)
+			dstIcon := "📦"
+			if dstType == "class" {
+				dstIcon = "🏷️"
+			}
+	
+			writer.WriteString(fmt.Sprintf("%s  │   └─📦 %s (SID: %d) → %s %s (SID: %d)\n",
+				indent, srcName, conn.SrcPortSID, dstIcon, dstName, conn.DstBlockSID))
+		}
 	}
-}
+	
 
 	// Output port information
 	for _, port := range currentSystem.Port {
@@ -484,5 +497,19 @@ func findBlockNameBySID(system *Public_Data.System, sid int) string {
 		}
 	}
 	return fmt.Sprintf("Unknown (SID: %d)", sid)
+}
+func findBlockTypeBySID(system *Public_Data.System, sid int) string {
+	if system.SID == sid {
+		return system.Type
+	}
+	for _, sub := range system.System {
+		if sub.SID == sid {
+			return sub.Type
+		}
+		if t := findBlockTypeBySID(sub, sid); t != "" {
+			return t
+		}
+	}
+	return ""
 }
 
