@@ -34,14 +34,15 @@ type Port struct {
 
 // 系统结构体
 type System struct {
-	Name    string     // 系统名称
-	SID     int        // 系统 SID
-	Inputs  int        // 输入数量
-	Outputs int        // 输出数量
-	Type    string     // 类型（system/class）
-	Port    []*Port    // 接口列表
-	System  []*System  // 子系统列表
-	Block   []*Block   // 功能块列表
+	Name    string
+	SID     int
+	Inputs  int
+	Outputs int
+	Type    string
+	Port    []*Port
+	System  []*System
+	Block   []*Block
+	ComponentConnections []*Connection 
 }
 
 // 根据模块创建新系统（可选择是否注册进全局系统列表）

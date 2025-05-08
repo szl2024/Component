@@ -140,7 +140,7 @@ func copyFile(src, dst string) error {
 // 获取子目录列表
 func getSubDirectories(path string) ([]string, error) {
 	var dirs []string
-	entries, err := os.ReadDir(path)
+	entries, err := ioutil.ReadDir(path)
 	if err != nil {
 		return nil, err
 	}

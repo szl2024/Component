@@ -367,7 +367,24 @@ func printSystemInfoToWriter(system *Public_Data.System, currentSystem *Public_D
 	writer.WriteString(fmt.Sprintf("%s  ├─📊 接口汇总: %d (输入: %d 输出: %d)\n", indent, portCount, inPortCount, outPortCount))
 	writer.WriteString(fmt.Sprintf("%s  ├─📊 类端口总数: %d (输入: %d 输出: %d)\n", indent, classInputsSum+classOutputsSum, classInputsSum, classOutputsSum))
 	writer.WriteString(fmt.Sprintf("%s  ├─📊 M1指标: %d\n", indent, classCount*portCount*(classInputsSum+classOutputsSum)))
-
+	// ✅ 输出当前系统发起的子系统连接（组件连接）
+	if len(currentSystem.ComponentConnections) > 0 {
+		writer.WriteString(fmt.Sprintf("%s  ├─🧩 Subsystem connection:\n", indent))
+		for _, conn := range currentSystem.ComponentConnections {
+			srcName := findBlockNameBySID(system, conn.SrcPortSID)
+			dstName := findBlockNameBySID(system, conn.DstBlockSID)
+	
+			// 判断目标组件类型
+			dstType := findBlockTypeBySID(system, conn.DstBlockSID)
+			dstIcon := "📦"
+			if dstType == "class" {
+				dstIcon = "🏷️"
+			}
+	
+			writer.WriteString(fmt.Sprintf("%s  │   └─📦 %s (SID: %d) → %s %s (SID: %d)\n",
+				indent, srcName, conn.SrcPortSID, dstIcon, dstName, conn.DstBlockSID))
+		}
+	}
 	for _, port := range currentSystem.Port {
 		writer.WriteString(fmt.Sprintf("%s  ├─🔌 接口: %-*s (SID: %4d, 类型: %-4s, IO: %-3s)\n",
 			indent, portNameWidth, port.Name, port.SID, port.PortType, port.IO))
@@ -431,3 +448,18 @@ func findBlockNameBySID(system *Public_Data.System, sid int) string {
 	}
 	return fmt.Sprintf("未知 (SID: %d)", sid)
 }
+func findBlockTypeBySID(system *Public_Data.System, sid int) string {
+	if system.SID == sid {
+		return system.Type
+	}
+	for _, sub := range system.System {
+		if sub.SID == sid {
+			return sub.Type
+		}
+		if t := findBlockTypeBySID(sub, sid); t != "" {
+			return t
+		}
+	}
+	return ""
+}
+
