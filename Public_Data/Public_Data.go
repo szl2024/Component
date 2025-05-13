@@ -11,20 +11,20 @@ var (
 )
 
 type Connection struct {
-	SrcPortSID  int
-	DstBlockSID int
+	SrcPortSID  string
+	DstBlockSID string
 	Direction   string //'out' means I am connecting with others, 'in' means others are connecting with me
 }
 type Block struct {
 	Name string
-	SID  int
+	SID  string
 	Type string
 }
 
 
 type Port struct {
     Name       string
-    SID        int
+    SID        string
     PortType   string
     IO         string
     Connection []*Connection
@@ -32,7 +32,7 @@ type Port struct {
 
 type System struct {
 	Name    string
-	SID     int
+	SID     string
 	Inputs  int
 	Outputs int
 	Type    string
@@ -44,7 +44,7 @@ type System struct {
 }
 
 
-func NewSystemFromBlock(name string, sid int, inputs int, outputs int, register bool) *System {
+func NewSystemFromBlock(name string, sid string, inputs int, outputs int, register bool) *System {
     sys := &System{
         Name:    name,
         SID:     sid,

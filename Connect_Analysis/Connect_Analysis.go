@@ -2,7 +2,7 @@ package Connect_Analysis
 
 import "Project/component/Public_Data"
 
-func ConnectAnalysis(srcID int, dstID int, currentSystem *Public_Data.System) {
+func ConnectAnalysis(srcID string, dstID string, currentSystem *Public_Data.System) {
 	// Analyze Port Port Connections
 	for _, port := range currentSystem.Port {
 		if port.SID == srcID {

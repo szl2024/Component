@@ -5,10 +5,7 @@ import (
 	"Project/component/Public_Data"
 )
 
-
-
-
-func PortAnalysis(name string, sid int, blockType string, hasPortAttribute bool, currentSystem *Public_Data.System) {
+func PortAnalysis(name string, sid string, blockType string, hasPortAttribute bool, currentSystem *Public_Data.System) {
 	portType := "C-S"
 	if hasPortAttribute {
 		portType = "S-R"

@@ -33,16 +33,16 @@ type (
 	blockState struct {
 		Type        string
 		Name        string
-		SID         int
+		SID         string
 		IsAtomic    bool
 		SystemRef   string
 		PortCounts  portCounts
 	}
 
 	lineState struct {
-		Src      int
-		Dst      int
-		Branches []int  // Branch connection target
+		Src      string
+		Dst      string
+		Branches []string  // Branch connection target
 	}
 	
 
@@ -182,11 +182,7 @@ func (s *parserState) initBlockState(elem xml.StartElement) {
 		case "Name":
 			s.currentBlock.Name = attr.Value
 		case "SID":
-			sidStr := attr.Value
-			parts := strings.Split(sidStr, "::")
-			lastPart := parts[len(parts)-1]
-			s.currentBlock.SID, _ = strconv.Atoi(lastPart)
-		
+    		s.currentBlock.SID = attr.Value
 		case "BlockType":
 			s.currentBlock.Type = attr.Value
 		}
@@ -286,19 +282,14 @@ func (s *parserState) processBlock(queue *[]struct{ path string; sys *Public_Dat
 // Analyze the information of the Link 
 // (such as which blocks the Port port is connected to, or which block's output is connected to the Port port)
 func (s *parserState) processLine() {
-	if s.currentLine.Src != 0 {
-		// Main target connection
-		if s.currentLine.Dst != 0 {
+	if s.currentLine.Src != "" {
+		if s.currentLine.Dst != "" {
 			Connect_Analysis.ConnectAnalysis(s.currentLine.Src, s.currentLine.Dst, s.currentSystem)
 		}
-	
-		// All branch target connections
 		for _, branchDst := range s.currentLine.Branches {
 			Connect_Analysis.ConnectAnalysis(s.currentLine.Src, branchDst, s.currentSystem)
 		}
-	}
-	
-	
+	}	
 }
 
 // Process the content of P tags
@@ -339,20 +330,14 @@ func generateNewPath(originalPath, systemRef string) string {
 }
 
 // ID extraction tool function
-func extractID(content string) int {
-	parts := strings.Split(content, "#")
-	if len(parts) == 0 {
-		return 0
-	}
-
-	// Split the SID part again
-	sidPart := parts[0]
-	sidSubParts := strings.Split(sidPart, "::")
-	lastSID := sidSubParts[len(sidSubParts)-1]
-
-	id, _ := strconv.Atoi(lastSID)
-	return id
+func extractID(content string) string {
+    parts := strings.Split(content, "#")
+    if len(parts) > 0 {
+        return parts[0]
+    }
+    return ""
 }
+
 
 
 func printSystemInfoToWriter(system *Public_Data.System, currentSystem *Public_Data.System, indent string, writer *strings.Builder) {
@@ -370,7 +355,7 @@ func printSystemInfoToWriter(system *Public_Data.System, currentSystem *Public_D
 	 cleanName := strings.ReplaceAll(currentSystem.Name, "\n", " ")
 	 cleanName = strings.ReplaceAll(cleanName, "\r", "")
 	 
-	 writer.WriteString(fmt.Sprintf("%sSystem: %s (SID: %d)\n", systemPrefix, cleanName, currentSystem.SID))
+	 writer.WriteString(fmt.Sprintf("%sSystem: %s (SID: %s)\n", systemPrefix, cleanName, currentSystem.SID))
 
 
 
@@ -415,14 +400,14 @@ func printSystemInfoToWriter(system *Public_Data.System, currentSystem *Public_D
 			srcName := findBlockNameBySID(system, conn.SrcPortSID)
 			dstName := findBlockNameBySID(system, conn.DstBlockSID)
 	
-			// 判断目标组件类型
+			// Determine the type of target component
 			dstType := findBlockTypeBySID(system, conn.DstBlockSID)
 			dstIcon := "📦"
 			if dstType == "class" {
 				dstIcon = "🏷️"
 			}
 	
-			writer.WriteString(fmt.Sprintf("%s  │   └─📦 %s (SID: %d) → %s %s (SID: %d)\n",
+			writer.WriteString(fmt.Sprintf("%s  │   └─📦 %s (SID: %s) → %s %s (SID: %s)\n",
 				indent, srcName, conn.SrcPortSID, dstIcon, dstName, conn.DstBlockSID))
 		}
 	}
@@ -430,23 +415,23 @@ func printSystemInfoToWriter(system *Public_Data.System, currentSystem *Public_D
 
 	// Output port information
 	for _, port := range currentSystem.Port {
-		writer.WriteString(fmt.Sprintf("%s  ├─🔌 Port: %-*s (SID: %4d, Type: %-4s, IO: %-3s)\n",
+		writer.WriteString(fmt.Sprintf("%s  ├─🔌 Port: %-*s (SID: %s, Type: %-4s, IO: %-3s)\n",
 			indent, portNameWidth, port.Name, port.SID, port.PortType, port.IO))
 
 		// Output connection information
 		if len(port.Connection) > 0 {
 			var targets []string
 			for _, conn := range port.Connection {
-				var targetSID int
+				var targetSID string
 				var targetName string
 				if conn.Direction == "out" {
 					targetSID = conn.DstBlockSID
 					targetName = findBlockNameBySID(system, conn.DstBlockSID)
-					targets = append(targets, fmt.Sprintf("[→] %s (SID: %d)", targetName, targetSID))
+					targets = append(targets, fmt.Sprintf("[→] %s (SID: %s)", targetName, targetSID))
 				} else {
 					targetSID = conn.SrcPortSID
 					targetName = findBlockNameBySID(system, conn.SrcPortSID)
-					targets = append(targets, fmt.Sprintf("[←] %s (SID: %d)", targetName, targetSID))
+					targets = append(targets, fmt.Sprintf("[←] %s (SID: %s)", targetName, targetSID))
 				}
 			}
 			if len(targets) > 1 {
@@ -472,7 +457,7 @@ func printSystemInfoToWriter(system *Public_Data.System, currentSystem *Public_D
 }
 
 
-func findBlockNameBySID(system *Public_Data.System, sid int) string {
+func findBlockNameBySID(system *Public_Data.System, sid string) string {
 	for _, port := range system.Port {
 		if port.SID == sid {
 			return port.Name
@@ -498,7 +483,7 @@ func findBlockNameBySID(system *Public_Data.System, sid int) string {
 	}
 	return fmt.Sprintf("Unknown (SID: %d)", sid)
 }
-func findBlockTypeBySID(system *Public_Data.System, sid int) string {
+func findBlockTypeBySID(system *Public_Data.System, sid string) string {
 	if system.SID == sid {
 		return system.Type
 	}

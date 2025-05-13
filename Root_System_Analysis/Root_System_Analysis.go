@@ -25,7 +25,7 @@ func AnalyzeRootXML(xmlPath string, modelName string) error {
 		hasValidPorts    bool
 		currentSystemRef string
 		blockName        string
-		blockSID         int
+		blockSID         string
 		portCountsIn     int
 		portCountsOut    int
 		portsParam       string
@@ -45,7 +45,7 @@ func AnalyzeRootXML(xmlPath string, modelName string) error {
 				hasValidPorts = false
 				currentSystemRef = ""
 				blockName = ""
-				blockSID = 0
+				blockSID = ""
 				portCountsIn = 0
 				portCountsOut = 0
 				portsParam = ""
@@ -56,9 +56,7 @@ func AnalyzeRootXML(xmlPath string, modelName string) error {
 					case "Name":
 						blockName = attr.Value
 					case "SID":
-						if sid, err := strconv.Atoi(attr.Value); err == nil {
-							blockSID = sid
-						}
+    					blockSID = attr.Value
 					case "BlockType":
 						if attr.Value == "SubSystem" {
 							inSubsystem = true
