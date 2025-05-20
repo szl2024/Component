@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ConfigSet>
-  <Object Version="24.0.0" ClassName="Simulink.ConfigSet">
+  <Object Version="20.1.0" ClassName="Simulink.ConfigSet">
     <P Name="DisabledProps" Class="double">[]</P>
     <P Name="Description"/>
     <Array PropName="Components" Type="Handle" Dimension="1*10">
-      <Object ObjectID="2" Version="24.0.0" ClassName="Simulink.SolverCC">
+      <Object ObjectID="2" Version="20.1.0" ClassName="Simulink.SolverCC">
         <P Name="DisabledProps" Class="double">[]</P>
         <P Name="Description"/>
         <P Name="Components" Class="double">[]</P>
@@ -25,11 +25,9 @@
         <P Name="MaxConsecutiveMinStep">1</P>
         <P Name="RelTol">1e-3</P>
         <P Name="EnableMultiTasking">off</P>
-        <P Name="AllowMultiTaskInputOutput">off</P>
         <P Name="ConcurrentTasks">off</P>
         <P Name="SolverName">FixedStepDiscrete</P>
         <P Name="SolverJacobianMethodControl">auto</P>
-        <P Name="DaesscMode">auto</P>
         <P Name="ShapePreserveControl">DisableAll</P>
         <P Name="ZeroCrossControl">UseLocalSettings</P>
         <P Name="ZeroCrossAlgorithm">Nonadaptive</P>
@@ -45,11 +43,8 @@
         <P Name="DecoupledContinuousIntegration">off</P>
         <P Name="MinimalZcImpactIntegration">off</P>
         <P Name="ODENIntegrationMethod">ode3</P>
-        <P Name="EnableFixedStepZeroCrossing">off</P>
-        <P Name="MaxZcPerStep">2</P>
-        <P Name="MaxZcBracketingIterations">10</P>
       </Object>
-      <Object ObjectID="3" Version="24.0.0" ClassName="Simulink.DataIOCC">
+      <Object ObjectID="3" Version="20.1.0" ClassName="Simulink.DataIOCC">
         <P Name="DisabledProps" Class="double">[]</P>
         <P Name="Description"/>
         <P Name="Components" Class="double">[]</P>
@@ -69,7 +64,6 @@
         <P Name="SaveState">off</P>
         <P Name="SignalLogging">on</P>
         <P Name="DSMLogging">on</P>
-        <P Name="StreamToWks">on</P>
         <P Name="InspectSignalLogs">off</P>
         <P Name="VisualizeSimOutput">on</P>
         <P Name="StreamToWorkspace">off</P>
@@ -90,8 +84,10 @@
         <P Name="LoggingFileName">out.mat</P>
         <P Name="LoggingIntervals">[-inf, inf]</P>
       </Object>
-      <Object ObjectID="4" Version="24.0.0" ClassName="Simulink.OptimizationCC">
-        <P Name="DisabledProps" Class="double">[]</P>
+      <Object ObjectID="4" Version="20.1.0" ClassName="Simulink.OptimizationCC">
+        <Array PropName="DisabledProps" Type="Cell" Dimension="1*1">
+          <Cell Class="char">ZeroExternalMemoryAtStartup</Cell>
+        </Array>
         <P Name="Description"/>
         <P Name="Components" Class="double">[]</P>
         <P Name="BlockReduction">on</P>
@@ -101,13 +97,11 @@
         <P Name="UseDivisionForNetSlopeComputation">off</P>
         <P Name="GainParamInheritBuiltInType">off</P>
         <P Name="UseFloatMulNetSlope">off</P>
-        <P Name="InheritOutputTypeSmallerThanSingle">off</P>
         <P Name="DefaultUnderspecifiedDataType">double</P>
         <P Name="UseSpecifiedMinMax">off</P>
         <P Name="InlineInvariantSignals">off</P>
         <P Name="OptimizeBlockIOStorage">on</P>
         <P Name="BufferReuse">on</P>
-        <P Name="ReuseModelBlockBuffer">on</P>
         <P Name="EnhancedBackFolding">on</P>
         <P Name="CachingGlobalReferences">off</P>
         <P Name="GlobalBufferReuse">on</P>
@@ -134,10 +128,8 @@
         <P Name="EfficientFloat2IntCast">off</P>
         <P Name="EfficientMapNaN2IntZero">on</P>
         <P Name="LifeSpan">auto</P>
-        <P Name="ClockResolution">-1</P>
         <P Name="MaxStackSize">Inherit from target</P>
         <P Name="BufferReusableBoundary">on</P>
-        <P Name="RemoveLocalVariableInitialization">on</P>
         <P Name="SimCompilerOptimization">off</P>
         <P Name="AccelVerboseBuild">off</P>
         <P Name="OptimizeBlockOrder">speed</P>
@@ -150,11 +142,10 @@
         <P Name="OptimizationCustomize">off</P>
         <P Name="LabelGuidedReuse">off</P>
         <P Name="MultiThreadedLoops">off</P>
-        <P Name="AutoScheduleForLoops">off</P>
         <P Name="DenormalBehavior">GradualUnderflow</P>
         <P Name="EfficientTunableParamExpr">on</P>
       </Object>
-      <Object ObjectID="5" Version="24.0.0" ClassName="Simulink.DebuggingCC">
+      <Object ObjectID="5" Version="20.1.0" ClassName="Simulink.DebuggingCC">
         <P Name="DisabledProps" Class="double">[]</P>
         <P Name="Description"/>
         <P Name="Components" Class="double">[]</P>
@@ -175,6 +166,7 @@
         <P Name="UnderspecifiedInitializationDetection">Simplified</P>
         <P Name="MergeDetectMultiDrivingBlocksExec">error</P>
         <P Name="CheckExecutionContextPreStartOutputMsg">off</P>
+        <P Name="CheckExecutionContextRuntimeOutputMsg">off</P>
         <P Name="SignalResolutionControl">UseLocalSettings</P>
         <P Name="BlockPriorityViolationMsg">warning</P>
         <P Name="MinStepSizeMsg">warning</P>
@@ -198,10 +190,6 @@
         <P Name="ParameterOverflowMsg">error</P>
         <P Name="ParameterUnderflowMsg">none</P>
         <P Name="ParameterPrecisionLossMsg">warning</P>
-        <P Name="ParamSuppressDoubleToSinglePrecisionLossMsg">off</P>
-        <P Name="ParamPrecisionLossAbsoluteDiffThreshold">0.0</P>
-        <P Name="ParamPrecisionLossRelativeDiffThreshold">0.0</P>
-        <P Name="ParamOverflowErrorThreshold">OneBit</P>
         <P Name="ParameterTunabilityLossMsg">error</P>
         <P Name="FixptConstUnderflowMsg">none</P>
         <P Name="FixptConstOverflowMsg">none</P>
@@ -223,6 +211,7 @@
         <P Name="AssertControl">UseLocalSettings</P>
         <P Name="AllowSymbolicDim">on</P>
         <P Name="RowMajorDimensionSupport">off</P>
+        <P Name="ModelReferenceIOMsg">none</P>
         <P Name="ModelReferenceMultiInstanceNormalModeStructChecksumCheck">error</P>
         <P Name="ModelReferenceVersionMismatchMessage">none</P>
         <P Name="ModelReferenceIOMismatchMessage">none</P>
@@ -230,11 +219,12 @@
         <P Name="ModelReferenceDataLoggingMessage">warning</P>
         <P Name="ModelReferenceNoExplicitFinalValueMsg">none</P>
         <P Name="ModelReferenceSymbolNameMessage">warning</P>
+        <P Name="ModelReferenceExtraNoncontSigs">error</P>
         <P Name="StateNameClashWarn">none</P>
         <P Name="OperatingPointInterfaceChecksumMismatchMsg">warning</P>
         <P Name="NonCurrentReleaseOperatingPointMsg">error</P>
+        <P Name="ChecksumConsistencyForSSReuse">none</P>
         <P Name="PregeneratedLibrarySubsystemCodeDiagnostic">warning</P>
-        <P Name="SubsystemReferenceDiagnosticForUnitTest">error</P>
         <P Name="MatchCodeGenerationContextForUpdateDiagram">none</P>
         <P Name="InitInArrayFormatMsg">warning</P>
         <P Name="StrictBusMsg">ErrorLevel1</P>
@@ -257,6 +247,7 @@
         <P Name="SFTemporalDelaySmallerThanSampleTimeDiag">warning</P>
         <P Name="SFSelfTransitionDiag">warning</P>
         <P Name="SFExecutionAtInitializationDiag">warning</P>
+        <P Name="SFMachineParentedDataDiag">warning</P>
         <P Name="IntegerSaturationMsg">warning</P>
         <P Name="AllowedUnitSystems">all</P>
         <P Name="UnitsInconsistencyMsg">warning</P>
@@ -269,11 +260,8 @@
         <P Name="DebugExecutionForFMUViaOutOfProcess">off</P>
         <P Name="ArithmeticOperatorsInVariantConditions">error</P>
         <P Name="VariantConditionMismatch">none</P>
-        <P Name="InheritVATfromSVC">warning</P>
-        <P Name="VariantConfigNotUsedByTopModel">warning</P>
-        <P Name="ParamWriterValidationControl">UseLocalSettings</P>
       </Object>
-      <Object ObjectID="6" Version="24.0.0" ClassName="Simulink.HardwareCC">
+      <Object ObjectID="6" Version="20.1.0" ClassName="Simulink.HardwareCC">
         <P Name="DisabledProps" Class="double">[]</P>
         <P Name="Description"/>
         <P Name="Components" Class="double">[]</P>
@@ -321,7 +309,7 @@
         <P Name="UseSimulinkCoderFeatures">on</P>
         <P Name="HardwareBoardFeatureSet">EmbeddedCoderHSP</P>
       </Object>
-      <Object ObjectID="7" Version="24.0.0" ClassName="Simulink.ModelReferenceCC">
+      <Object ObjectID="7" Version="20.1.0" ClassName="Simulink.ModelReferenceCC">
         <P Name="DisabledProps" Class="double">[]</P>
         <P Name="Description"/>
         <P Name="Components" Class="double">[]</P>
@@ -338,9 +326,8 @@
         <P Name="ModelReferenceMinAlgLoopOccurrences">off</P>
         <P Name="PropagateSignalLabelsOutOfModel">on</P>
         <P Name="SupportModelReferenceSimTargetCustomCode">off</P>
-        <P Name="UseModelRefSolver">off</P>
       </Object>
-      <Object ObjectID="8" Version="24.0.0" ClassName="Simulink.SFSimCC">
+      <Object ObjectID="8" Version="20.1.0" ClassName="Simulink.SFSimCC">
         <P Name="DisabledProps" Class="double">[]</P>
         <P Name="Description"/>
         <P Name="Components" Class="double">[]</P>
@@ -361,22 +348,16 @@
         <P Name="SimUseLocalCustomCode">on</P>
         <P Name="SimParseCustomCode">on</P>
         <P Name="SimAnalyzeCustomCode">off</P>
-        <P Name="SimDebugExecutionForCustomCode">off</P>
         <P Name="SimGenImportedTypeDefs">off</P>
         <P Name="ModelFunctionsGlobalVisibility">on</P>
         <P Name="CompileTimeRecursionLimit">50</P>
         <P Name="EnableRuntimeRecursion">on</P>
-        <P Name="EnableImplicitExpansion">on</P>
         <P Name="MATLABDynamicMemAlloc">off</P>
         <P Name="MATLABDynamicMemAllocThreshold">65536</P>
-        <P Name="LegacyBehaviorForPersistentVarInContinuousTime">off</P>
         <P Name="CustomCodeFunctionArrayLayout" Class="double">[]</P>
         <P Name="DefaultCustomCodeFunctionArrayLayout">NotSpecified</P>
         <P Name="CustomCodeUndefinedFunction">FilterOut</P>
         <P Name="CustomCodeGlobalsAsFunctionIO">off</P>
-        <P Name="DefaultCustomCodeDeterministicFunctions">None</P>
-        <P Name="CustomCodeDeterministicFunctions"/>
-        <P Name="SimHardwareAcceleration">generic</P>
         <P Name="SimTargetLang">C</P>
         <P Name="GPUAcceleration">off</P>
         <P Name="SimGPUMallocThreshold">200</P>
@@ -387,11 +368,12 @@
         <P Name="SimDLTargetLibrary">mkl-dnn</P>
         <P Name="SimDLAutoTuning">on</P>
       </Object>
-      <Object BackupClass="Simulink.RTWCC" ObjectID="9" Version="24.0.0" ClassName="Simulink.RTWCC">
-        <P Name="DisabledProps" Class="double">[]</P>
-        <P Name="Description">Embedded Coder</P>
-        <P Name="SystemTargetFile">ert.tlc</P>
-        <P Name="EmbeddedCoderDictionary"/>
+      <Object BackupClass="Simulink.RTWCC" ObjectID="9" Version="20.1.0" ClassName="Simulink.RTWCC">
+        <Array PropName="DisabledProps" Type="Cell" Dimension="1*1">
+          <Cell Class="char">TargetLang</Cell>
+        </Array>
+        <P Name="Description">AUTOSAR</P>
+        <P Name="SystemTargetFile">autosar.tlc</P>
         <P Name="HardwareBoard">None</P>
         <P Name="ShowCustomHardwareApp">off</P>
         <P Name="ShowEmbeddedHardwareApp">off</P>
@@ -411,7 +393,6 @@
         <P Name="TLCDebug">off</P>
         <P Name="TLCCoverage">off</P>
         <P Name="TLCAssert">off</P>
-        <P Name="BuiltinFFTWCallback">off</P>
         <P Name="RTWUseLocalCustomCode">on</P>
         <P Name="RTWUseSimCustomCode">off</P>
         <P Name="CustomSourceCode"/>
@@ -436,15 +417,9 @@
         <P Name="CodeExecutionProfileVariable">executionProfile</P>
         <P Name="CodeProfilingSaveOptions">SummaryOnly</P>
         <P Name="CodeProfilingInstrumentation">off</P>
-        <P Name="CodeStackProfiling">off</P>
-        <P Name="CodeStackProfileVariable">stackProfile</P>
-        <P Name="SILPILDebugging">off</P>
-        <P Name="RemoveFixptWordSizeChecks">off</P>
-        <P Name="DataTypeReplacement">CDataTypesFixedWidth</P>
-        <P Name="CoderTypedefsCompatibility">off</P>
+        <P Name="SILDebugging">off</P>
         <P Name="TargetLang">C</P>
         <P Name="GenerateGPUCode">None</P>
-        <P Name="HalideCodeGeneration">off</P>
         <P Name="IncludeBusHierarchyInRTWFileBlockHierarchyMap">off</P>
         <P Name="GenerateTraceInfo">off</P>
         <P Name="GenerateTraceReport">off</P>
@@ -464,7 +439,6 @@
         <P Name="GPUDeviceID">-1</P>
         <P Name="GPUMallocMode">discrete</P>
         <P Name="GPUMallocThreshold">200</P>
-        <P Name="GPUEnableMemoryManager">off</P>
         <P Name="GPUStackLimitPerThread">1024</P>
         <P Name="GPUcuBLAS">on</P>
         <P Name="GPUcuSOLVER">on</P>
@@ -473,17 +447,12 @@
         <P Name="GPUComputeCapability">3.5</P>
         <P Name="GPUCustomComputeCapability"/>
         <P Name="GPUCompilerFlags"/>
-        <P Name="GPUMaximumBlocksPerKernel">0</P>
         <P Name="DLTargetLibrary">none</P>
         <P Name="DLAutoTuning">on</P>
-        <P Name="DLDataType">fp32</P>
         <P Name="DLArmComputeVersion">19.05</P>
         <P Name="DLArmComputeArch">unspecified</P>
-        <P Name="DLLearnablesCompression">None</P>
-        <P Name="LargeConstantGeneration">KeepInSourceFiles</P>
-        <P Name="LargeConstantThreshold">131072</P>
         <Array PropName="Components" Type="Handle" Dimension="1*2">
-          <Object ObjectID="10" Version="24.0.0" ClassName="Simulink.CodeAppCC">
+          <Object ObjectID="10" Version="20.1.0" ClassName="Simulink.CodeAppCC">
             <P Name="DisabledProps" Class="double">[]</P>
             <P Name="Description"/>
             <P Name="Components" Class="double">[]</P>
@@ -538,10 +507,26 @@
             <P Name="ReservedNameArray" Class="double">[]</P>
             <P Name="EnumMemberNameClash">error</P>
           </Object>
-          <Object BackupClass="Simulink.TargetCC" ObjectID="11" Version="24.0.0" ClassName="Simulink.ERTTargetCC">
-            <P Name="DisabledProps" Class="double">[]</P>
+          <Object BackupClass="Simulink.TargetCC" ObjectID="11" Version="20.1.0" ClassName="Simulink.STFCustomTargetCC">
+            <Array PropName="DisabledProps" Type="Cell" Dimension="1*16">
+              <Cell Class="char">CombineOutputUpdateFcns</Cell>
+              <Cell Class="char">SupportContinuousTime</Cell>
+              <Cell Class="char">SupportVariableSizeSignals</Cell>
+              <Cell Class="char">SupportNonFinite</Cell>
+              <Cell Class="char">GenerateSampleERTMain</Cell>
+              <Cell Class="char">MatFileLogging</Cell>
+              <Cell Class="char">GRTInterface</Cell>
+              <Cell Class="char">SupportNonInlinedSFcns</Cell>
+              <Cell Class="char">SuppressErrorStatus</Cell>
+              <Cell Class="char">SupportComplex</Cell>
+              <Cell Class="char">GenerateAllocFcn</Cell>
+              <Cell Class="char">AutosarCompliant</Cell>
+              <Cell Class="char">ModelStepFunctionPrototypeControlCompliant</Cell>
+              <Cell Class="char">CompOptLevelCompliant</Cell>
+              <Cell Class="char">ParMdlRefBuildCompliant</Cell>
+              <Cell Class="char">ERTFirstTimeCompliant</Cell>
+            </Array>
             <P Name="Description"/>
-            <P Name="Components" Class="double">[]</P>
             <P Name="TargetFcnLib">ansi_tfl_table_tmw.mat</P>
             <P Name="TargetLibSuffix"/>
             <P Name="TargetPreCompLibLocation"/>
@@ -555,17 +540,17 @@
             <P Name="GenerateFullHeader">on</P>
             <P Name="InferredTypesCompatibility">off</P>
             <P Name="ExistingSharedCode"/>
-            <P Name="GenerateSampleERTMain">on</P>
+            <P Name="GenerateSampleERTMain">off</P>
             <P Name="GenerateTestInterfaces">off</P>
             <P Name="ModelReferenceCompliant">on</P>
             <P Name="ParMdlRefBuildCompliant">on</P>
             <P Name="CompOptLevelCompliant">on</P>
-            <P Name="ConcurrentExecutionCompliant">on</P>
-            <P Name="IncludeMdlTerminateFcn">on</P>
+            <P Name="ConcurrentExecutionCompliant">off</P>
+            <P Name="IncludeMdlTerminateFcn">off</P>
             <P Name="CombineOutputUpdateFcns">on</P>
             <P Name="CombineSignalStateStructs">off</P>
             <P Name="GroupInternalDataByFunction">off</P>
-            <P Name="SuppressErrorStatus">off</P>
+            <P Name="SuppressErrorStatus">on</P>
             <P Name="IncludeFileDelimiter">Auto</P>
             <P Name="ERTCustomFileBanners">on</P>
             <P Name="SupportAbsoluteTime">on</P>
@@ -573,8 +558,8 @@
             <P Name="MatFileLogging">off</P>
             <P Name="CodeInterfacePackaging">Nonreusable function</P>
             <P Name="PurelyIntegerCode">off</P>
-            <P Name="SupportNonFinite">on</P>
-            <P Name="SupportComplex">on</P>
+            <P Name="SupportNonFinite">off</P>
+            <P Name="SupportComplex">off</P>
             <P Name="SupportContinuousTime">off</P>
             <P Name="SupportNonInlinedSFcns">off</P>
             <P Name="RemoveDisableFunc">off</P>
@@ -583,9 +568,9 @@
             <P Name="ParenthesesLevel">Nominal</P>
             <P Name="CastingMode">Nominal</P>
             <P Name="MATLABClassNameForMDSCustomization">Simulink.SoftwareTarget.ERTCustomization</P>
-            <P Name="ModelStepFunctionPrototypeControlCompliant">on</P>
-            <P Name="CPPClassGenCompliant">on</P>
-            <P Name="AutosarCompliant">off</P>
+            <P Name="ModelStepFunctionPrototypeControlCompliant">off</P>
+            <P Name="CPPClassGenCompliant">off</P>
+            <P Name="AutosarCompliant">on</P>
             <P Name="MDXCompliant">off</P>
             <P Name="GRTInterface">off</P>
             <P Name="GenerateAllocFcn">off</P>
@@ -593,124 +578,234 @@
             <P Name="GenerateSharedConstants">on</P>
             <P Name="CoderGroups" Class="double">[]</P>
             <P Name="AccessMethods" Class="double">[]</P>
-            <P Name="LookupTableObjectStructAxisOrder">1,2,3,4,...</P>
+            <P Name="LookupTableObjectStructAxisOrder">2,1,3,4,...</P>
             <P Name="LUTObjectStructOrderExplicitValues">Size,Breakpoints,Table</P>
-            <P Name="LUTObjectStructOrderEvenSpacing">Size,Breakpoints,Table</P>
+            <P Name="LUTObjectStructOrderEvenSpacing">Size,Table,Breakpoints</P>
             <P Name="ArrayLayout">Column-major</P>
             <P Name="UnsupportedSFcnMsg">error</P>
             <P Name="ERTHeaderFileRootName">$R$E</P>
             <P Name="ERTSourceFileRootName">$R$E</P>
             <P Name="ERTDataFileRootName">$R_data</P>
-            <Array PropName="InstructionSetExtensions" Type="Cell" Dimension="1*1">
-              <Cell Class="char">SSE2</Cell>
+            <P Name="SystemTargetFile">autosar.tlc</P>
+            <P Name="DialogCategory">0</P>
+            <Array PropName="Components" Type="Handle" Dimension="1*1">
+              <Object BackupClass="Simulink.TargetCC" ObjectID="12" Version="20.1.0" ClassName="Simulink.ERTTargetCC">
+                <Array PropName="DisabledProps" Type="Cell" Dimension="1*19">
+                  <Cell Class="char">CombineOutputUpdateFcns</Cell>
+                  <Cell Class="char">SupportContinuousTime</Cell>
+                  <Cell Class="char">SupportVariableSizeSignals</Cell>
+                  <Cell Class="char">SupportNonFinite</Cell>
+                  <Cell Class="char">GenerateSampleERTMain</Cell>
+                  <Cell Class="char">TargetOS</Cell>
+                  <Cell Class="char">MatFileLogging</Cell>
+                  <Cell Class="char">GRTInterface</Cell>
+                  <Cell Class="char">SupportNonInlinedSFcns</Cell>
+                  <Cell Class="char">SuppressErrorStatus</Cell>
+                  <Cell Class="char">RootIOFormat</Cell>
+                  <Cell Class="char">SupportComplex</Cell>
+                  <Cell Class="char">GenerateAllocFcn</Cell>
+                  <Cell Class="char">MultiInstanceErrorCode</Cell>
+                  <Cell Class="char">AutosarCompliant</Cell>
+                  <Cell Class="char">ModelStepFunctionPrototypeControlCompliant</Cell>
+                  <Cell Class="char">CompOptLevelCompliant</Cell>
+                  <Cell Class="char">ParMdlRefBuildCompliant</Cell>
+                  <Cell Class="char">ERTFirstTimeCompliant</Cell>
+                </Array>
+                <P Name="Description"/>
+                <P Name="Components" Class="double">[]</P>
+                <P Name="TargetFcnLib">ansi_tfl_table_tmw.mat</P>
+                <P Name="TargetLibSuffix"/>
+                <P Name="TargetPreCompLibLocation"/>
+                <P Name="GenFloatMathFcnCalls">NOT IN USE</P>
+                <P Name="TargetLangStandard">C99 (ISO)</P>
+                <P Name="CodeReplacementLibrary">None</P>
+                <P Name="UtilityFuncGeneration">Auto</P>
+                <P Name="MultiwordTypeDef">System defined</P>
+                <P Name="MultiwordLength">256</P>
+                <P Name="DynamicStringBufferSize">256</P>
+                <P Name="GenerateFullHeader">on</P>
+                <P Name="InferredTypesCompatibility">off</P>
+                <P Name="ExistingSharedCode"/>
+                <P Name="GenerateSampleERTMain">off</P>
+                <P Name="GenerateTestInterfaces">off</P>
+                <P Name="ModelReferenceCompliant">on</P>
+                <P Name="ParMdlRefBuildCompliant">on</P>
+                <P Name="CompOptLevelCompliant">on</P>
+                <P Name="ConcurrentExecutionCompliant">off</P>
+                <P Name="IncludeMdlTerminateFcn">off</P>
+                <P Name="CombineOutputUpdateFcns">on</P>
+                <P Name="CombineSignalStateStructs">off</P>
+                <P Name="GroupInternalDataByFunction">off</P>
+                <P Name="SuppressErrorStatus">on</P>
+                <P Name="IncludeFileDelimiter">Auto</P>
+                <P Name="ERTCustomFileBanners">on</P>
+                <P Name="SupportAbsoluteTime">on</P>
+                <P Name="LogVarNameModifier">rt_</P>
+                <P Name="MatFileLogging">off</P>
+                <P Name="CodeInterfacePackaging">Nonreusable function</P>
+                <P Name="PurelyIntegerCode">off</P>
+                <P Name="SupportNonFinite">off</P>
+                <P Name="SupportComplex">off</P>
+                <P Name="SupportContinuousTime">off</P>
+                <P Name="SupportNonInlinedSFcns">off</P>
+                <P Name="RemoveDisableFunc">off</P>
+                <P Name="RemoveResetFunc">on</P>
+                <P Name="SupportVariableSizeSignals">off</P>
+                <P Name="ParenthesesLevel">Nominal</P>
+                <P Name="CastingMode">Nominal</P>
+                <P Name="MATLABClassNameForMDSCustomization">Simulink.SoftwareTarget.ERTCustomization</P>
+                <P Name="ModelStepFunctionPrototypeControlCompliant">off</P>
+                <P Name="CPPClassGenCompliant">off</P>
+                <P Name="AutosarCompliant">on</P>
+                <P Name="MDXCompliant">off</P>
+                <P Name="GRTInterface">off</P>
+                <P Name="GenerateAllocFcn">off</P>
+                <P Name="UseToolchainInfoCompliant">on</P>
+                <P Name="GenerateSharedConstants">on</P>
+                <P Name="CoderGroups" Class="double">[]</P>
+                <P Name="AccessMethods" Class="double">[]</P>
+                <P Name="LookupTableObjectStructAxisOrder">2,1,3,4,...</P>
+                <P Name="LUTObjectStructOrderExplicitValues">Size,Breakpoints,Table</P>
+                <P Name="LUTObjectStructOrderEvenSpacing">Size,Table,Breakpoints</P>
+                <P Name="ArrayLayout">Column-major</P>
+                <P Name="UnsupportedSFcnMsg">error</P>
+                <P Name="ERTHeaderFileRootName">$R$E</P>
+                <P Name="ERTSourceFileRootName">$R$E</P>
+                <P Name="ERTDataFileRootName">$R_data</P>
+                <P Name="GenerateASAP2">off</P>
+                <P Name="DSAsUniqueAccess">off</P>
+                <P Name="ExtMode">off</P>
+                <P Name="ExtModeTransport">0</P>
+                <P Name="ExtModeStaticAlloc">off</P>
+                <P Name="ExtModeStaticAllocSize">1000000</P>
+                <P Name="ExtModeTesting">off</P>
+                <P Name="ExtModeMexFile">ext_comm</P>
+                <P Name="ExtModeMexArgs"/>
+                <P Name="ExtModeIntrfLevel">Level1</P>
+                <P Name="InlinedParameterPlacement">NonHierarchical</P>
+                <P Name="TargetOS">BareBoardExample</P>
+                <P Name="MultiInstanceErrorCode">Error</P>
+                <P Name="RootIOFormat">Individual arguments</P>
+                <P Name="RTWCAPISignals">off</P>
+                <P Name="RTWCAPIParams">off</P>
+                <P Name="RTWCAPIStates">off</P>
+                <P Name="RTWCAPIRootIO">off</P>
+                <P Name="ERTSrcFileBannerTemplate">ert_code_template.cgt</P>
+                <P Name="ERTHdrFileBannerTemplate">ert_code_template.cgt</P>
+                <P Name="ERTDataSrcFileTemplate">ert_code_template.cgt</P>
+                <P Name="ERTDataHdrFileTemplate">ert_code_template.cgt</P>
+                <P Name="ERTCustomFileTemplate">example_file_process.tlc</P>
+                <P Name="EnableDataOwnership">off</P>
+                <P Name="SignalDisplayLevel">10</P>
+                <P Name="ParamTuneLevel">10</P>
+                <P Name="GlobalDataDefinition">Auto</P>
+                <P Name="DataDefinitionFile">global.c</P>
+                <P Name="GlobalDataReference">Auto</P>
+                <P Name="ERTFilePackagingFormat">Modular</P>
+                <P Name="RateTransitionBlockCode">Inline</P>
+                <P Name="DataReferenceFile">global.h</P>
+                <P Name="PreserveExpressionOrder">off</P>
+                <P Name="PreserveIfCondition">off</P>
+                <P Name="ConvertIfToSwitch">on</P>
+                <P Name="PreserveExternInFcnDecls">on</P>
+                <P Name="PreserveStaticInFcnDecls">on</P>
+                <P Name="SuppressUnreachableDefaultCases">on</P>
+                <P Name="EnableSignedLeftShifts">on</P>
+                <P Name="EnableSignedRightShifts">on</P>
+                <P Name="IndentStyle">K&amp;R</P>
+                <P Name="IndentSize">2</P>
+                <P Name="NewlineStyle">Default</P>
+                <P Name="MaxLineWidth">80</P>
+                <P Name="EnableUserReplacementTypes">off</P>
+                <Array PropName="ReplacementTypes" Type="Struct" Dimension="1*1">
+                  <MATStruct>
+                    <Field Name="double" Class="char"/>
+                    <Field Name="single" Class="char"/>
+                    <Field Name="int32" Class="char"/>
+                    <Field Name="int16" Class="char"/>
+                    <Field Name="int8" Class="char"/>
+                    <Field Name="uint32" Class="char"/>
+                    <Field Name="uint16" Class="char"/>
+                    <Field Name="uint8" Class="char"/>
+                    <Field Name="boolean" Class="char"/>
+                    <Field Name="int" Class="char"/>
+                    <Field Name="uint" Class="char"/>
+                    <Field Name="char" Class="char"/>
+                    <Field Name="uint64" Class="char"/>
+                    <Field Name="int64" Class="char"/>
+                  </MATStruct>
+                </Array>
+                <P Name="MaxIdInt64">MAX_int64_T</P>
+                <P Name="MinIdInt64">MIN_int64_T</P>
+                <P Name="MaxIdUint64">MAX_uint64_T</P>
+                <P Name="MaxIdInt32">MAX_int32_T</P>
+                <P Name="MinIdInt32">MIN_int32_T</P>
+                <P Name="MaxIdUint32">MAX_uint32_T</P>
+                <P Name="MaxIdInt16">MAX_int16_T</P>
+                <P Name="MinIdInt16">MIN_int16_T</P>
+                <P Name="MaxIdUint16">MAX_uint16_T</P>
+                <P Name="MaxIdInt8">MAX_int8_T</P>
+                <P Name="MinIdInt8">MIN_int8_T</P>
+                <P Name="MaxIdUint8">MAX_uint8_T</P>
+                <P Name="BooleanTrueId">true</P>
+                <P Name="BooleanFalseId">false</P>
+                <P Name="TypeLimitIdReplacementHeaderFile"/>
+                <P Name="MemSecPackage">--- None ---</P>
+                <P Name="MemSecDataConstants">Default</P>
+                <P Name="MemSecDataIO">Default</P>
+                <P Name="MemSecDataInternal">Default</P>
+                <P Name="MemSecDataParameters">Default</P>
+                <P Name="MemSecFuncInitTerm">Default</P>
+                <P Name="MemSecFuncExecute">Default</P>
+                <P Name="MemSecFuncSharedUtil">Default</P>
+                <P Name="GroupConstants">Default</P>
+                <P Name="GroupRootInputs">Default</P>
+                <P Name="GroupRootOutputs">Default</P>
+                <P Name="GroupInternal">Default</P>
+                <P Name="GroupParameters">Default</P>
+                <P Name="GroupDataTransfer">Default</P>
+                <P Name="GroupSharedLocalDataStores">Default</P>
+                <P Name="GroupInstanceSpecificParameters">Default</P>
+                <P Name="GroupModelData">Default</P>
+                <P Name="ArrayContainerType">C-style array</P>
+              </Object>
             </Array>
-            <P Name="InstructionSetFMA">off</P>
-            <P Name="OptimizeReductions">off</P>
-            <P Name="HeaderGuardPrefix"/>
-            <P Name="LogToMDFFile">off</P>
-            <P Name="GenerateASAP2">off</P>
-            <P Name="DSAsUniqueAccess">off</P>
-            <P Name="ExtMode">off</P>
-            <P Name="ExtModeTransport">0</P>
-            <P Name="ExtModeStaticAlloc">off</P>
-            <P Name="ExtModeAutomaticAllocSize">on</P>
-            <P Name="ExtModeMaxTrigDuration">10</P>
-            <P Name="ExtModeStaticAllocSize">1000000</P>
-            <P Name="ExtModeTesting">off</P>
-            <P Name="ExtModeMexFile">ext_comm</P>
-            <P Name="ExtModeMexArgs"/>
-            <P Name="ExtModeIntrfLevel">Level1</P>
-            <P Name="InlinedParameterPlacement">NonHierarchical</P>
-            <P Name="TargetOS">BareBoardExample</P>
-            <P Name="MultiInstanceErrorCode">Error</P>
-            <P Name="RootIOFormat">Individual arguments</P>
-            <P Name="RTWCAPISignals">off</P>
-            <P Name="RTWCAPIParams">off</P>
-            <P Name="RTWCAPIStates">off</P>
-            <P Name="RTWCAPIRootIO">off</P>
-            <P Name="ERTSrcFileBannerTemplate">ert_code_template.cgt</P>
-            <P Name="ERTHdrFileBannerTemplate">ert_code_template.cgt</P>
-            <P Name="ERTDataSrcFileTemplate">ert_code_template.cgt</P>
-            <P Name="ERTDataHdrFileTemplate">ert_code_template.cgt</P>
-            <P Name="ERTCustomFileTemplate">example_file_process.tlc</P>
-            <P Name="EnableDataOwnership">off</P>
-            <P Name="SignalDisplayLevel">10</P>
-            <P Name="ParamTuneLevel">10</P>
-            <P Name="GlobalDataDefinition">Auto</P>
-            <P Name="DataDefinitionFile">global.c</P>
-            <P Name="GlobalDataReference">Auto</P>
-            <P Name="ERTFilePackagingFormat">Modular</P>
-            <P Name="RateTransitionBlockCode">Inline</P>
-            <P Name="DataReferenceFile">global.h</P>
-            <P Name="PreserveExpressionOrder">off</P>
-            <P Name="PreserveIfCondition">off</P>
-            <P Name="ConvertIfToSwitch">on</P>
-            <P Name="PreserveExternInFcnDecls">on</P>
-            <P Name="PreserveStaticInFcnDecls">on</P>
-            <P Name="SuppressUnreachableDefaultCases">on</P>
-            <P Name="EnableSignedLeftShifts">on</P>
-            <P Name="EnableSignedRightShifts">on</P>
-            <P Name="ImplementImageWithCVMat">off</P>
-            <P Name="IndentStyle">K&amp;R</P>
-            <P Name="IndentSize">2</P>
-            <P Name="NewlineStyle">Default</P>
-            <P Name="MaxLineWidth">80</P>
-            <P Name="EnableUserReplacementTypes">off</P>
-            <Array PropName="ReplacementTypes" Type="Struct" Dimension="1*1">
-              <MATStruct>
-                <Field Name="double" Class="char"/>
-                <Field Name="single" Class="char"/>
-                <Field Name="int32" Class="char"/>
-                <Field Name="int16" Class="char"/>
-                <Field Name="int8" Class="char"/>
-                <Field Name="uint32" Class="char"/>
-                <Field Name="uint16" Class="char"/>
-                <Field Name="uint8" Class="char"/>
-                <Field Name="boolean" Class="char"/>
-                <Field Name="int" Class="char"/>
-                <Field Name="uint" Class="char"/>
-                <Field Name="char" Class="char"/>
-                <Field Name="uint64" Class="char"/>
-                <Field Name="int64" Class="char"/>
-              </MATStruct>
-            </Array>
-            <P Name="MaxIdInt64">INT64_MAX</P>
-            <P Name="MinIdInt64">INT64_MIN</P>
-            <P Name="MaxIdUint64">UINT64_MAX</P>
-            <P Name="MaxIdInt32">INT32_MAX</P>
-            <P Name="MinIdInt32">INT32_MIN</P>
-            <P Name="MaxIdUint32">UINT32_MAX</P>
-            <P Name="MaxIdInt16">INT16_MAX</P>
-            <P Name="MinIdInt16">INT16_MIN</P>
-            <P Name="MaxIdUint16">UINT16_MAX</P>
-            <P Name="MaxIdInt8">INT8_MAX</P>
-            <P Name="MinIdInt8">INT8_MIN</P>
-            <P Name="MaxIdUint8">UINT8_MAX</P>
-            <P Name="BooleanTrueId">true</P>
-            <P Name="BooleanFalseId">false</P>
-            <P Name="TypeLimitIdReplacementHeaderFile"/>
-            <P Name="MemSecPackage">--- None ---</P>
-            <P Name="MemSecDataConstants">Default</P>
-            <P Name="MemSecDataIO">Default</P>
-            <P Name="MemSecDataInternal">Default</P>
-            <P Name="MemSecDataParameters">Default</P>
-            <P Name="MemSecFuncInitTerm">Default</P>
-            <P Name="MemSecFuncExecute">Default</P>
-            <P Name="MemSecFuncSharedUtil">Default</P>
-            <P Name="GroupConstants">Default</P>
-            <P Name="GroupRootInputs">Default</P>
-            <P Name="GroupRootOutputs">Default</P>
-            <P Name="GroupInternal">Default</P>
-            <P Name="GroupParameters">Default</P>
-            <P Name="GroupDataTransfer">Default</P>
-            <P Name="GroupSharedLocalDataStores">Default</P>
-            <P Name="GroupInstanceSpecificParameters">Default</P>
-            <P Name="GroupModelData">Default</P>
-            <P Name="ArrayContainerType">C-style array</P>
+            <CustomProperty Name="AutosarSchemaVersion" DataType="RTWOptions_EnumType__toolbox_rtw_targets_AUTOSAR_AUTOSAR_autosar_1AutosarSchemaVersion">
+              <EnumStrPairs>
+                <P Name="Value">0</P>
+                <P Name="String">2.1</P>
+                <P Name="Value">1</P>
+                <P Name="String">3.0</P>
+                <P Name="Value">2</P>
+                <P Name="String">3.1</P>
+                <P Name="Value">3</P>
+                <P Name="String">3.2</P>
+                <P Name="Value">4</P>
+                <P Name="String">4.0</P>
+                <P Name="Value">5</P>
+                <P Name="String">4.1</P>
+                <P Name="Value">6</P>
+                <P Name="String">4.2</P>
+                <P Name="Value">7</P>
+                <P Name="String">4.3</P>
+                <P Name="Value">8</P>
+                <P Name="String">4.4</P>
+              </EnumStrPairs>
+              <P Name="Value">4.3</P>
+            </CustomProperty>
+            <CustomProperty Name="AutosarMaxShortNameLength" DataType="int32">
+              <P Name="Value">128</P>
+            </CustomProperty>
+            <CustomProperty Name="AutosarCompilerAbstraction" DataType="slbool">
+              <P Name="Value">off</P>
+            </CustomProperty>
+            <CustomProperty Name="AutosarMatrixIOAsArray" DataType="slbool">
+              <P Name="Value">off</P>
+            </CustomProperty>
           </Object>
         </Array>
       </Object>
-      <Object ObjectID="12" Version="24.0.0" ClassName="SlCovCC.ConfigComp">
+      <Object ObjectID="13" Version="20.1.0" ClassName="SlCovCC.ConfigComp">
         <P Name="DisabledProps" Class="double">[]</P>
         <P Name="Description">Simulink Coverage Configuration Component</P>
         <P Name="Components" Class="double">[]</P>
@@ -746,9 +841,8 @@
         <P Name="CovStartTime">0</P>
         <P Name="CovStopTime">0</P>
         <P Name="CovMcdcMode">Masking</P>
-        <P Name="CovExcludeInactiveVariants">off</P>
       </Object>
-      <Object ObjectID="13" Version="24.0.0" ClassName="hdlcoderui.hdlcc">
+      <Object ObjectID="14" Version="20.1.0" ClassName="hdlcoderui.hdlcc">
         <P Name="DisabledProps" Class="double">[]</P>
         <P Name="Description">HDL Coder custom configuration component</P>
         <P Name="Components" Class="double">[]</P>
@@ -762,6 +856,6 @@
     <P Name="Name">Configuration</P>
     <P Name="CurrentDlgPage">Solver</P>
     <P Name="ConfigPrmDlgPosition">[ 0, 0, 0, 0 ]</P>
-    <P Name="ExtraOptions"/>
+    <P Name="ExtraOptions">-aBlockCommentType=&quot;BlockPathComment&quot; -aIgnoreTestpoints=0 </P>
   </Object>
 </ConfigSet>

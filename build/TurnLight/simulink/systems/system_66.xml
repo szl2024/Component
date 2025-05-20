@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <System>
-  <P Name="Location">[680, 245, 2584, 1268]</P>
-  <P Name="SIDHighWatermark">109</P>
+  <P Name="Location">[-1928, -8, 8, 1048]</P>
+  <P Name="SystemRect">[0.000000, 0.000000, 0.000000, 0.000000]</P>
+  <P Name="SetExecutionDomain">off</P>
+  <P Name="ExecutionDomainType">Deduce</P>
+  <P Name="SIDHighWatermark">106</P>
+  <P Name="SimulinkSubDomain">Simulink</P>
   <Block BlockType="Inport" Name="HazardSw" SID="66::101">
     <P Name="Position">[20, 101, 40, 119]</P>
     <P Name="ZOrder">81</P>
@@ -26,77 +30,76 @@
     <P Name="ZOrder">85</P>
     <P Name="Port">5</P>
   </Block>
-  <Block BlockType="Demux" Name=" Demux " SID="66::108">
-    <PortCounts in="1" out="1"/>
+  <Block BlockType="Demux" Name=" Demux " SID="66::98">
+    <P Name="Ports">[1, 1]</P>
     <P Name="Position">[270, 230, 320, 270]</P>
-    <P Name="ZOrder">88</P>
+    <P Name="ZOrder">78</P>
     <P Name="Outputs">1</P>
   </Block>
-  <Block BlockType="S-Function" Name=" SFunction " SID="66::107">
+  <Block BlockType="S-Function" Name=" SFunction " SID="66::97">
     <P Name="Tag">Stateflow S-Function 1</P>
-    <PortCounts in="5" out="2"/>
-    <P Name="Position">[180, 100, 230, 220]</P>
-    <P Name="ZOrder">87</P>
+    <P Name="Ports">[5, 2]</P>
+    <P Name="Position">[180, 105, 230, 225]</P>
+    <P Name="ZOrder">77</P>
     <P Name="FunctionName">sf_sfun</P>
     <P Name="Parameters">EBL_NO_REQ,EBL_REQ,HAZARDQR_OFF,HAZARDQR_ON,HAZARDRQ_OFF,HAZARDRQ_ON,HAZARDSW_OFF,HAZARDSW_ON,NO_CRASH,VS_VALID</P>
     <P Name="PortCounts">[5 2]</P>
     <P Name="SFunctionDeploymentMode">off</P>
     <P Name="EnableBusSupport">on</P>
     <P Name="SFcnIsStateOwnerBlock">off</P>
-    <PortProperties>
-      <Port Type="out" Index="2">
-        <P Name="Name">HazardRqst</P>
-      </Port>
-    </PortProperties>
+    <Port>
+      <P Name="PortNumber">2</P>
+      <P Name="Name">HazardRqst</P>
+    </Port>
   </Block>
-  <Block BlockType="Terminator" Name=" Terminator " SID="66::109">
+  <Block BlockType="Terminator" Name=" Terminator " SID="66::99">
     <P Name="Position">[460, 241, 480, 259]</P>
-    <P Name="ZOrder">89</P>
+    <P Name="ZOrder">79</P>
   </Block>
   <Block BlockType="Outport" Name="HazardRqst" SID="66::106">
     <P Name="Position">[460, 101, 480, 119]</P>
     <P Name="ZOrder">86</P>
   </Block>
   <Line>
-    <P Name="ZOrder">9</P>
+    <P Name="ZOrder">1</P>
     <P Name="Src">66::101#out:1</P>
-    <P Name="Dst">66::107#in:1</P>
+    <P Name="Dst">66::97#in:1</P>
   </Line>
   <Line>
-    <P Name="ZOrder">10</P>
+    <P Name="ZOrder">2</P>
     <P Name="Src">66::102#out:1</P>
-    <P Name="Dst">66::107#in:2</P>
+    <P Name="Dst">66::97#in:2</P>
   </Line>
   <Line>
-    <P Name="ZOrder">11</P>
+    <P Name="ZOrder">3</P>
     <P Name="Src">66::103#out:1</P>
-    <P Name="Dst">66::107#in:3</P>
+    <P Name="Dst">66::97#in:3</P>
   </Line>
   <Line>
-    <P Name="ZOrder">12</P>
+    <P Name="ZOrder">4</P>
     <P Name="Src">66::104#out:1</P>
-    <P Name="Dst">66::107#in:4</P>
+    <P Name="Dst">66::97#in:4</P>
   </Line>
   <Line>
-    <P Name="ZOrder">13</P>
+    <P Name="ZOrder">5</P>
     <P Name="Src">66::105#out:1</P>
-    <P Name="Dst">66::107#in:5</P>
+    <P Name="Dst">66::97#in:5</P>
   </Line>
   <Line>
     <P Name="Name">HazardRqst</P>
-    <P Name="ZOrder">14</P>
+    <P Name="ZOrder">6</P>
     <P Name="Labels">[0, 0]</P>
-    <P Name="Src">66::107#out:2</P>
+    <P Name="Src">66::97#out:2</P>
     <P Name="Dst">66::106#in:1</P>
   </Line>
   <Line>
-    <P Name="ZOrder">15</P>
-    <P Name="Src">66::108#out:1</P>
-    <P Name="Dst">66::109#in:1</P>
+    <P Name="ZOrder">7</P>
+    <P Name="Src">66::98#out:1</P>
+    <P Name="Dst">66::99#in:1</P>
   </Line>
   <Line>
-    <P Name="ZOrder">16</P>
-    <P Name="Src">66::107#out:1</P>
-    <P Name="Dst">66::108#in:1</P>
+    <P Name="ZOrder">8</P>
+    <P Name="Src">66::97#out:1</P>
+    <P Name="Dst">66::98#in:1</P>
   </Line>
 </System>

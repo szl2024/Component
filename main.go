@@ -4,6 +4,7 @@ package main
 import (
 	"Project/component/File_Utils"
 	"Project/component/Public_Data"
+	"Project/component/LDI_Generator"
 	"fmt"
 	"os"
 )
@@ -38,5 +39,8 @@ func main() {
 	if err := File_Utils.ProcessSLXFiles(); err != nil {
 		fmt.Println("An error occurred while processing the file:", err)
 		return
+	}
+	if err := LDI_Generator.GenerateLDIFilesFromTxt(Public_Data.TxtDir, Public_Data.LdiDir); err != nil {
+		fmt.Println("An error occurred while generating LDI files:", err)
 	}
 }

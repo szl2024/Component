@@ -6,7 +6,9 @@ var (
 	Dir       string
 	BuildDir  string
 	OutputDir string
-	Windir    string 
+	Windir    string
+	LdiDir    string
+	TxtDir    string
 	Systems   []*System
 )
 

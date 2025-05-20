@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sltp_graph version="1.1" packageUris="http://schema.mathworks.com/mf0/sltp_mm/R2023a_202209151115">
+<sltp_graph version="1.1" packageUris="http://schema.mathworks.com/mf0/sltp_mm/R2020b_202003251737">
   <sltp.mm.core.Context type="sltp.mm.core.Context" uuid="43009242-1522-49de-b700-e8ff92a38044">
     <globalData type="sltp.mm.core.GlobalData" uuid="450abcf3-6787-4c25-8e5c-a68668bea7b4">
       <dataName>portCountSignal_Left_u8_Signal</dataName>
@@ -78,10 +78,8 @@
       <type>RootInport</type>
     </globalData>
     <priorityDirection>HighNumberLast</priorityDirection>
-    <defaultEventBehavior type="sltp.mm.core.EventBehavior" uuid="c3dd59ca-9fb1-47c5-9bde-15f5540b2fa2"/>
     <editorState type="sltp.mm.core.EditorState" uuid="bb242ab7-24b5-4f11-abbd-df392bc30832">
       <isSynchronized>true</isSynchronized>
-      <panelState type="sltp.mm.core.EditorPanelState" uuid="2a722219-3f35-49c3-a4b8-eb06f248d6d2"/>
     </editorState>
     <rootTask type="sltp.mm.core.Task" uuid="e1338d80-ff08-4062-8f50-3ad6e65b96d9">
       <context type="sltp.mm.core.Context" uuid="43009242-1522-49de-b700-e8ff92a38044"/>

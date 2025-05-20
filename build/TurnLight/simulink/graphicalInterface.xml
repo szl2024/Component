@@ -4,14 +4,12 @@
   <Inport Name="TurnLight_Runnable_10ms">
     <P Name="BusObject"/>
     <P Name="OutputFunctionCall">on</P>
-    <P Name="InportServerType">off</P>
     <P Name="SampleTime">0.01</P>
     <P Name="UnitExpr">inherit</P>
   </Inport>
   <Inport Name="CountSignal_Left_u8_Signal">
     <P Name="BusObject"/>
     <P Name="OutputFunctionCall">off</P>
-    <P Name="InportServerType">off</P>
     <P Name="SampleTime">-1</P>
     <P Name="UnitExpr">inherit</P>
     <P Name="DataTypeExpr">uint8</P>
@@ -21,7 +19,6 @@
   <Inport Name="CountSignal_Right_u8_Signal">
     <P Name="BusObject"/>
     <P Name="OutputFunctionCall">off</P>
-    <P Name="InportServerType">off</P>
     <P Name="SampleTime">-1</P>
     <P Name="UnitExpr">inherit</P>
     <P Name="DataTypeExpr">uint8</P>
@@ -31,7 +28,6 @@
   <Inport Name="CrashIntensity_u8_Signal">
     <P Name="BusObject"/>
     <P Name="OutputFunctionCall">off</P>
-    <P Name="InportServerType">off</P>
     <P Name="SampleTime">-1</P>
     <P Name="UnitExpr">inherit</P>
     <P Name="DataTypeExpr">uint8</P>
@@ -41,7 +37,6 @@
   <Inport Name="EmergencyBrakeLight_u8_Signal">
     <P Name="BusObject"/>
     <P Name="OutputFunctionCall">off</P>
-    <P Name="InportServerType">off</P>
     <P Name="SampleTime">-1</P>
     <P Name="UnitExpr">inherit</P>
     <P Name="DataTypeExpr">uint8</P>
@@ -51,7 +46,6 @@
   <Inport Name="HazardSw_u8_Signal">
     <P Name="BusObject"/>
     <P Name="OutputFunctionCall">off</P>
-    <P Name="InportServerType">off</P>
     <P Name="SampleTime">-1</P>
     <P Name="UnitExpr">inherit</P>
     <P Name="DataTypeExpr">uint8</P>
@@ -61,7 +55,6 @@
   <Inport Name="IGN_Status_u8_signal">
     <P Name="BusObject"/>
     <P Name="OutputFunctionCall">off</P>
-    <P Name="InportServerType">off</P>
     <P Name="SampleTime">-1</P>
     <P Name="UnitExpr">inherit</P>
     <P Name="DataTypeExpr">uint8</P>
@@ -71,7 +64,6 @@
   <Inport Name="TurnLampCtrlCmd_FL_u8_signal">
     <P Name="BusObject"/>
     <P Name="OutputFunctionCall">off</P>
-    <P Name="InportServerType">off</P>
     <P Name="SampleTime">-1</P>
     <P Name="UnitExpr">inherit</P>
     <P Name="DataTypeExpr">uint8</P>
@@ -81,7 +73,6 @@
   <Inport Name="TurnLampCtrlCmd_FR_u8_signa">
     <P Name="BusObject"/>
     <P Name="OutputFunctionCall">off</P>
-    <P Name="InportServerType">off</P>
     <P Name="SampleTime">-1</P>
     <P Name="UnitExpr">inherit</P>
     <P Name="DataTypeExpr">uint8</P>
@@ -91,7 +82,6 @@
   <Inport Name="TurnLampCtrlCmd_RL_u8_signal">
     <P Name="BusObject"/>
     <P Name="OutputFunctionCall">off</P>
-    <P Name="InportServerType">off</P>
     <P Name="SampleTime">-1</P>
     <P Name="UnitExpr">inherit</P>
     <P Name="DataTypeExpr">uint8</P>
@@ -101,7 +91,6 @@
   <Inport Name="TurnLampCtrlCmd_RR_u8_signal">
     <P Name="BusObject"/>
     <P Name="OutputFunctionCall">off</P>
-    <P Name="InportServerType">off</P>
     <P Name="SampleTime">-1</P>
     <P Name="UnitExpr">inherit</P>
     <P Name="DataTypeExpr">uint8</P>
@@ -111,7 +100,6 @@
   <Inport Name="TurnLampFb_FL_u8_Signal">
     <P Name="BusObject"/>
     <P Name="OutputFunctionCall">off</P>
-    <P Name="InportServerType">off</P>
     <P Name="SampleTime">-1</P>
     <P Name="UnitExpr">inherit</P>
     <P Name="DataTypeExpr">uint8</P>
@@ -121,7 +109,6 @@
   <Inport Name="TurnLampFb_FR_u8_Signal">
     <P Name="BusObject"/>
     <P Name="OutputFunctionCall">off</P>
-    <P Name="InportServerType">off</P>
     <P Name="SampleTime">-1</P>
     <P Name="UnitExpr">inherit</P>
     <P Name="DataTypeExpr">uint8</P>
@@ -131,7 +118,6 @@
   <Inport Name="TurnLampFb_RL_u8_Signal">
     <P Name="BusObject"/>
     <P Name="OutputFunctionCall">off</P>
-    <P Name="InportServerType">off</P>
     <P Name="SampleTime">-1</P>
     <P Name="UnitExpr">inherit</P>
     <P Name="DataTypeExpr">uint8</P>
@@ -141,7 +127,6 @@
   <Inport Name="TurnLampFb_RR_u8_Signal">
     <P Name="BusObject"/>
     <P Name="OutputFunctionCall">off</P>
-    <P Name="InportServerType">off</P>
     <P Name="SampleTime">-1</P>
     <P Name="UnitExpr">inherit</P>
     <P Name="DataTypeExpr">uint8</P>
@@ -151,7 +136,6 @@
   <Inport Name="TurnLampSw_u8_Signal">
     <P Name="BusObject"/>
     <P Name="OutputFunctionCall">off</P>
-    <P Name="InportServerType">off</P>
     <P Name="SampleTime">-1</P>
     <P Name="UnitExpr">inherit</P>
     <P Name="DataTypeExpr">uint8</P>
@@ -161,7 +145,6 @@
   <Inport Name="VehicleSpeed_u16_signal">
     <P Name="BusObject"/>
     <P Name="OutputFunctionCall">off</P>
-    <P Name="InportServerType">off</P>
     <P Name="SampleTime">-1</P>
     <P Name="UnitExpr">inherit</P>
     <P Name="DataTypeExpr">uint16</P>
@@ -171,7 +154,6 @@
   <Inport Name="VehicleSpeed_Valid_u8_Signal">
     <P Name="BusObject"/>
     <P Name="OutputFunctionCall">off</P>
-    <P Name="InportServerType">off</P>
     <P Name="SampleTime">-1</P>
     <P Name="UnitExpr">inherit</P>
     <P Name="DataTypeExpr">uint8</P>
@@ -186,7 +168,6 @@
     <P Name="DataTypeExpr">uint8</P>
     <P Name="ComplexityExpr">0</P>
     <P Name="DimensionsExpr">[1]</P>
-    <P Name="OutportClientType">off</P>
   </Outport>
   <P Name="ParameterArgumentNames"/>
   <P Name="NumModelReferences">0</P>
@@ -199,12 +180,10 @@
   <P Name="NumResetEvents">0</P>
   <P Name="HasInitializeEvent">1</P>
   <P Name="HasTerminateEvent">0</P>
-  <P Name="NumDataStoreReferences">0</P>
-  <P Name="PreCompExecutionDomainType">ExportFunction</P>
-  <P Name="UseModelRefSolver">0</P>
-  <P Name="SolverName">FixedStepDiscrete</P>
+  <P Name="PreCompExecutionDomainType">Unset</P>
   <P Name="IsExportFunctionModel">1</P>
-  <P Name="SimulinkSubDomainType">Simulink</P>
+  <P Name="IsArchitectureModel">0</P>
+  <P Name="IsAUTOSARArchitectureModel">0</P>
   <P Name="NumParameterArguments">0</P>
   <P Name="NumExternalFileReferences">0</P>
   <P Name="OrderedModelArguments">1</P>

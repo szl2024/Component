@@ -2,10 +2,12 @@
 <chart id="246">
   <P Name="name">TurnLight_Runnable_10ms_sys/TurnLightCtrlLogic</P>
   <P Name="windowPosition">[-8 -8 1936 1056]</P>
-  <P Name="viewLimits">[256.725 2060.725 46.308 805.308]</P>
-  <P Name="zoomFactor">1.333</P>
+  <P Name="viewLimits">[318.561 1288.161 219.821 848.621]</P>
+  <P Name="zoomFactor">1.067</P>
   <P Name="screen">[1 1 3200 1200 1.25]</P>
   <P Name="viewObj">246</P>
+  <P Name="visible">1</P>
+  <subviewS/>
   <P Name="ssIdHighWaterMark">49</P>
   <P Name="decomposition">CLUSTER_CHART</P>
   <P Name="chartFileNumber">3</P>

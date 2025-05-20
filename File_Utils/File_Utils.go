@@ -25,6 +25,7 @@ func GetWorkpath() (string, error) {
 }
 
 // Create a working directory
+// Create a working directory
 func CreateDirectories(workdir string) error {
 	// Using shared variables defined in Public_Sata
 	Public_Data.BuildDir = filepath.Join(workdir, "build")
@@ -56,8 +57,24 @@ func CreateDirectories(workdir string) error {
 	}
 	fmt.Println("Successfully created output directory:", Public_Data.OutputDir)
 
+	// ✅ 新增 LDI 和 txt 子目录
+	ldiDir := filepath.Join(Public_Data.OutputDir, "LDI")
+	txtDir := filepath.Join(Public_Data.OutputDir, "txt")
+
+	if err := os.Mkdir(ldiDir, 0755); err != nil {
+		return fmt.Errorf("Failed to create LDI directory: %v", err)
+	}
+	fmt.Println("Successfully created LDI directory:", ldiDir)
+
+	if err := os.Mkdir(txtDir, 0755); err != nil {
+		return fmt.Errorf("Failed to create txt directory: %v", err)
+	}
+	fmt.Println("Successfully created txt directory:", txtDir)
+	Public_Data.LdiDir = ldiDir
+	Public_Data.TxtDir = txtDir
 	return nil
 }
+
 
 // enter path 
 func InputPath() string {
@@ -95,7 +112,7 @@ func CopyMatchingSLXFiles(sourceDir string) error {
 		fmt.Printf("Successfully copied to: %s\n", dstPath)
 
 		txtFileName := strings.TrimSuffix(fileName, ".slx") + ".txt"
-		txtFilePath := filepath.Join(Public_Data.OutputDir, txtFileName)
+		txtFilePath := filepath.Join(Public_Data.TxtDir, txtFileName)
 
 		if err := createEmptyTxtFile(txtFilePath); err != nil {
 			fmt.Printf("Failed to create txt file: %v\n", err)

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sltp_editor version="1.1" packageUris="http://schema.mathworks.com/mf0/DiagramEditor/R2019a_20181107 http://schema.mathworks.com/mf0/SltpSyntax/R2023b_202303220000">
+<sltp_editor version="1.1" packageUris="http://schema.mathworks.com/mf0/DiagramEditor/R2019a_20181107 http://schema.mathworks.com/mf0/SltpSyntax/R2020b_202005081148">
   <diagram.editor.model.Diagram type="diagram.editor.model.Diagram" uuid="ccb7538e-79f6-43ff-8e31-75006f471ffa">
     <entities type="diagram.editor.model.Entity" uuid="41519a5a-c97a-4f33-a32a-ed8c39be4b10">
       <position>0,0</position>
       <size>0,0,0,0</size>
       <syntaxElement type="sltp.mm.syntax.Node" uuid="d2412192-bee7-42a5-8b5a-f648e8d55e18"/>
       <title>TurnLight_Runnable_10ms</title>
-      <type>explicit-periodic</type>
+      <type>aperiodic</type>
       <subDiagram type="diagram.editor.model.Diagram" uuid="72fa220e-5257-47ef-b2d5-6e17cc056ff9">
         <position>0,0</position>
         <syntaxElement type="sltp.mm.syntax.Graph" uuid="b91fe3aa-155d-4a19-b846-f08c3399db60"/>
@@ -105,7 +105,7 @@
           <title>F0</title>
         </rates>
         <title>TurnLight_Runnable_10ms</title>
-        <type>explicit-periodic</type>
+        <type>aperiodic</type>
         <diagramElement type="diagram.editor.model.Entity" uuid="41519a5a-c97a-4f33-a32a-ed8c39be4b10"/>
         <subgraph type="sltp.mm.syntax.Graph" uuid="b91fe3aa-155d-4a19-b846-f08c3399db60">
           <title>TurnLight_Runnable_10ms</title>

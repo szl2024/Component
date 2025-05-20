@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <System>
-  <P Name="Location">[680, 245, 2584, 1268]</P>
-  <P Name="SIDHighWatermark">114</P>
+  <P Name="Location">[-8, -8, 1928, 1048]</P>
+  <P Name="SystemRect">[0.000000, 0.000000, 0.000000, 0.000000]</P>
+  <P Name="SetExecutionDomain">off</P>
+  <P Name="ExecutionDomainType">Deduce</P>
+  <P Name="SIDHighWatermark">112</P>
+  <P Name="SimulinkSubDomain">Simulink</P>
   <Block BlockType="Inport" Name="TurnLightSwRqst" SID="69::101">
     <P Name="Position">[20, 101, 40, 119]</P>
     <P Name="ZOrder">81</P>
@@ -16,48 +20,51 @@
     <P Name="ZOrder">82</P>
     <P Name="Port">3</P>
   </Block>
-  <Block BlockType="Demux" Name=" Demux " SID="69::114">
-    <PortCounts in="1" out="6"/>
+  <Block BlockType="Demux" Name=" Demux " SID="69::98">
+    <P Name="Ports">[1, 6]</P>
     <P Name="Position">[270, 387, 320, 528]</P>
-    <P Name="ZOrder">92</P>
+    <P Name="ZOrder">78</P>
     <P Name="Outputs">6</P>
-    <PortProperties>
-      <Port Type="out" Index="1">
-        <P Name="Name">TurnLight_LeftShort</P>
-      </Port>
-      <Port Type="out" Index="2">
-        <P Name="Name">TurnLight_LeftLong</P>
-      </Port>
-      <Port Type="out" Index="3">
-        <P Name="Name">TurnLight_RightShort</P>
-      </Port>
-      <Port Type="out" Index="4">
-        <P Name="Name">TurnLight_RightLong</P>
-      </Port>
-      <Port Type="out" Index="5">
-        <P Name="Name">TurnLight_ALLOFF</P>
-      </Port>
-      <Port Type="out" Index="6">
-        <P Name="Name">TurnLight_ALLON</P>
-      </Port>
-    </PortProperties>
+    <Port>
+      <P Name="PortNumber">1</P>
+      <P Name="Name">TurnLight_LeftShort</P>
+    </Port>
+    <Port>
+      <P Name="PortNumber">2</P>
+      <P Name="Name">TurnLight_LeftLong</P>
+    </Port>
+    <Port>
+      <P Name="PortNumber">3</P>
+      <P Name="Name">TurnLight_RightShort</P>
+    </Port>
+    <Port>
+      <P Name="PortNumber">4</P>
+      <P Name="Name">TurnLight_RightLong</P>
+    </Port>
+    <Port>
+      <P Name="PortNumber">5</P>
+      <P Name="Name">TurnLight_ALLOFF</P>
+    </Port>
+    <Port>
+      <P Name="PortNumber">6</P>
+      <P Name="Name">TurnLight_ALLON</P>
+    </Port>
   </Block>
-  <Block BlockType="S-Function" Name=" SFunction " SID="69::113">
+  <Block BlockType="S-Function" Name=" SFunction " SID="69::97">
     <P Name="Tag">Stateflow S-Function 2</P>
-    <PortCounts in="3" out="2"/>
-    <P Name="Position">[180, 100, 230, 180]</P>
-    <P Name="ZOrder">91</P>
+    <P Name="Ports">[3, 2]</P>
+    <P Name="Position">[180, 110, 230, 190]</P>
+    <P Name="ZOrder">77</P>
     <P Name="FunctionName">sf_sfun</P>
     <P Name="Parameters">HAZARDQR_OFF,HAZARDQR_ON,HAZARDRQ_OFF,HAZARDRQ_ON,TLSR_LEFT_ON,TLSR_OFF,TLSR_RIGHT_ON,TLSWMODE_FLASH3,TLSWMODE_FLASHLONG</P>
     <P Name="PortCounts">[3 2]</P>
     <P Name="SFunctionDeploymentMode">off</P>
     <P Name="EnableBusSupport">on</P>
     <P Name="SFcnIsStateOwnerBlock">off</P>
-    <PortProperties>
-      <Port Type="out" Index="2">
-        <P Name="Name">TurnLight_Decide</P>
-      </Port>
-    </PortProperties>
+    <Port>
+      <P Name="PortNumber">2</P>
+      <P Name="Name">TurnLight_Decide</P>
+    </Port>
   </Block>
   <Block BlockType="Outport" Name="TurnLight_Decide" SID="69::110">
     <P Name="Position">[460, 101, 480, 119]</P>
@@ -94,72 +101,72 @@
     <P Name="Port">7</P>
   </Block>
   <Line>
-    <P Name="ZOrder">12</P>
+    <P Name="ZOrder">1</P>
     <P Name="Src">69::101#out:1</P>
-    <P Name="Dst">69::113#in:1</P>
+    <P Name="Dst">69::97#in:1</P>
   </Line>
   <Line>
-    <P Name="ZOrder">13</P>
+    <P Name="ZOrder">2</P>
     <P Name="Src">69::109#out:1</P>
-    <P Name="Dst">69::113#in:2</P>
+    <P Name="Dst">69::97#in:2</P>
   </Line>
   <Line>
-    <P Name="ZOrder">14</P>
+    <P Name="ZOrder">3</P>
     <P Name="Src">69::102#out:1</P>
-    <P Name="Dst">69::113#in:3</P>
+    <P Name="Dst">69::97#in:3</P>
   </Line>
   <Line>
     <P Name="Name">TurnLight_Decide</P>
-    <P Name="ZOrder">15</P>
+    <P Name="ZOrder">4</P>
     <P Name="Labels">[0, 0]</P>
-    <P Name="Src">69::113#out:2</P>
+    <P Name="Src">69::97#out:2</P>
     <P Name="Dst">69::110#in:1</P>
   </Line>
   <Line>
     <P Name="Name">TurnLight_LeftShort</P>
-    <P Name="ZOrder">16</P>
+    <P Name="ZOrder">5</P>
     <P Name="Labels">[0, 0]</P>
-    <P Name="Src">69::114#out:1</P>
+    <P Name="Src">69::98#out:1</P>
     <P Name="Dst">69::103#in:1</P>
   </Line>
   <Line>
     <P Name="Name">TurnLight_LeftLong</P>
-    <P Name="ZOrder">17</P>
+    <P Name="ZOrder">6</P>
     <P Name="Labels">[0, 0]</P>
-    <P Name="Src">69::114#out:2</P>
+    <P Name="Src">69::98#out:2</P>
     <P Name="Dst">69::104#in:1</P>
   </Line>
   <Line>
     <P Name="Name">TurnLight_RightShort</P>
-    <P Name="ZOrder">18</P>
+    <P Name="ZOrder">7</P>
     <P Name="Labels">[0, 0]</P>
-    <P Name="Src">69::114#out:3</P>
+    <P Name="Src">69::98#out:3</P>
     <P Name="Dst">69::105#in:1</P>
   </Line>
   <Line>
     <P Name="Name">TurnLight_RightLong</P>
-    <P Name="ZOrder">19</P>
+    <P Name="ZOrder">8</P>
     <P Name="Labels">[0, 0]</P>
-    <P Name="Src">69::114#out:4</P>
+    <P Name="Src">69::98#out:4</P>
     <P Name="Dst">69::106#in:1</P>
   </Line>
   <Line>
     <P Name="Name">TurnLight_ALLOFF</P>
-    <P Name="ZOrder">20</P>
+    <P Name="ZOrder">9</P>
     <P Name="Labels">[0, 0]</P>
-    <P Name="Src">69::114#out:5</P>
+    <P Name="Src">69::98#out:5</P>
     <P Name="Dst">69::107#in:1</P>
   </Line>
   <Line>
     <P Name="Name">TurnLight_ALLON</P>
-    <P Name="ZOrder">21</P>
+    <P Name="ZOrder">10</P>
     <P Name="Labels">[0, 0]</P>
-    <P Name="Src">69::114#out:6</P>
+    <P Name="Src">69::98#out:6</P>
     <P Name="Dst">69::108#in:1</P>
   </Line>
   <Line>
-    <P Name="ZOrder">22</P>
-    <P Name="Src">69::113#out:1</P>
-    <P Name="Dst">69::114#in:1</P>
+    <P Name="ZOrder">11</P>
+    <P Name="Src">69::97#out:1</P>
+    <P Name="Dst">69::98#in:1</P>
   </Line>
 </System>

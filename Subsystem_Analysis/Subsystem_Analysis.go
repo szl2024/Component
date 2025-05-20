@@ -69,7 +69,8 @@ func AnalyzeSubSystemXML(xmlPath string, rootSystem *Public_Data.System, modelNa
 		}
 	}
 	
-	outputPath := filepath.Join(Public_Data.OutputDir, modelName+".txt")
+	outputPath := filepath.Join(Public_Data.TxtDir, modelName+".txt")
+
 	var builder strings.Builder
 	builder.WriteString(fmt.Sprintf("📦 The results of the system architecture analysis are as follows：\n"))
 	printSystemInfoToWriter(rootSystem, rootSystem, "", &builder)

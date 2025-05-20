@@ -2,8 +2,8 @@
 <chart id="115">
   <P Name="name">TurnLight_Runnable_10ms_sys/HazardCtrlLogic</P>
   <P Name="windowPosition">[-1928 -8 1936 1056]</P>
-  <P Name="viewLimits">[-556.629 1247.371 140.706 899.706]</P>
-  <P Name="zoomFactor">1.333</P>
+  <P Name="viewLimits">[1045.016 1651.016 108.1 501.1]</P>
+  <P Name="zoomFactor">0.667</P>
   <P Name="screen">[1 1 3200 1200 1.25]</P>
   <P Name="viewObj">115</P>
   <P Name="ssIdHighWaterMark">33</P>

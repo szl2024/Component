@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<MF0 version="1.1" defaultPackage="slid" packageUris="http://schema.mathworks.com/mf0/slid/R2023a_20220628">
-  <System type="System" uuid="7b5f80bc-f9c0-4fe1-a9ce-b9d24395d2ee">
-    <Interface type="Interface" uuid="f969098c-7a2c-4ac4-bb54-15f4638bc9e2"/>
+<MF0 version="1.1" defaultPackage="slid" packageUris="http://schema.mathworks.com/mf0/slid/R2020b_20191110">
+  <System type="System" uuid="77dc5aa1-29ad-4f09-a1c9-92d79c6173c3">
+    <Interface type="Interface" uuid="af6ca510-4029-481f-98e0-49299b15f9c8"/>
   </System>
 </MF0>

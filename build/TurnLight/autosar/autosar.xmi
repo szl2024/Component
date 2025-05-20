@@ -24,27 +24,23 @@
             <externalToolInfo>ARXML_SwCalibrationAccessDefault|ReadWrite#Enumeration</externalToolInfo>
             <externalToolInfo>ARXML_CompuMethodDirection|InternalToPhys#Enumeration</externalToolInfo>
             <externalToolInfo>ARXML_META_MODEL_UUID|8bfe8805-5a13-46a9-8032-1f09403108e3</externalToolInfo>
-            <externalToolInfo>ARXML_NativeDeclaration|PlatformTypeName#Enumeration</externalToolInfo>
-            <externalToolInfo>ARXML_PlatformDataTypePackage|#String</externalToolInfo>
-            <externalToolInfo>ARXML_UsePlatformTypeReferences|BaseTypeReference#Enumeration</externalToolInfo>
-            <externalToolInfo>ARXML_PlatformTypeNames|AUTOSAR4.x#Enumeration</externalToolInfo>
             <packagedElement xmi:id="_m3i_3" xmi:type="arplatform:Simulink.metamodel.arplatform.common.Package" Name="AUTOSAR_Platform">
                 <externalToolInfo>ARXML_ArxmlFileInfo|1#FileName#G:/matlab/TurnLight/TurnLight_swc.arxml</externalToolInfo>
                 <externalToolInfo>ARXML|</externalToolInfo>
                 <packagedElement xmi:id="_m3i_4" xmi:type="arplatform:Simulink.metamodel.arplatform.common.Package" Name="BaseTypes">
                     <externalToolInfo>ARXML_ArxmlFileInfo|1#FileName#G:/matlab/TurnLight/TurnLight_swc.arxml</externalToolInfo>
                     <externalToolInfo>ARXML|</externalToolInfo>
-                    <packagedElement xmi:id="_m3i_5" xmi:type="types:Simulink.metamodel.types.SwBaseType" NativeDeclaration="uint16" Name="uint16" PrimitiveType="_m3i_109">
+                    <packagedElement xmi:id="_m3i_5" xmi:type="types:Simulink.metamodel.types.SwBaseType" Name="uint16" PrimitiveType="_m3i_109">
                         <externalToolInfo>ARXML_ArxmlFileInfo|1#FileName#G:/matlab/TurnLight/TurnLight_swc.arxml</externalToolInfo>
                         <externalToolInfo>ARXML_SwBaseTypeInfo|4#Size#16#Encoding#NONE#Category#FIXED_LENGTH#NativeDeclaration#</externalToolInfo>
                         <externalToolInfo>ARXML|</externalToolInfo>
                     </packagedElement>
-                    <packagedElement xmi:id="_m3i_6" xmi:type="types:Simulink.metamodel.types.SwBaseType" NativeDeclaration="uint64" Name="uint64" PrimitiveType="_m3i_110">
+                    <packagedElement xmi:id="_m3i_6" xmi:type="types:Simulink.metamodel.types.SwBaseType" Name="uint64" PrimitiveType="_m3i_110">
                         <externalToolInfo>ARXML_ArxmlFileInfo|1#FileName#G:/matlab/TurnLight/TurnLight_swc.arxml</externalToolInfo>
                         <externalToolInfo>ARXML_SwBaseTypeInfo|4#Size#64#Encoding#NONE#Category#FIXED_LENGTH#NativeDeclaration#</externalToolInfo>
                         <externalToolInfo>ARXML|</externalToolInfo>
                     </packagedElement>
-                    <packagedElement xmi:id="_m3i_7" xmi:type="types:Simulink.metamodel.types.SwBaseType" NativeDeclaration="uint8" Name="uint8" PrimitiveType="_m3i_111 _m3i_189 _m3i_185">
+                    <packagedElement xmi:id="_m3i_7" xmi:type="types:Simulink.metamodel.types.SwBaseType" Name="uint8" PrimitiveType="_m3i_111 _m3i_189 _m3i_185">
                         <externalToolInfo>ARXML_ArxmlFileInfo|1#FileName#G:/matlab/TurnLight/TurnLight_swc.arxml</externalToolInfo>
                         <externalToolInfo>ARXML_SwBaseTypeInfo|4#Size#8#Encoding#NONE#Category#FIXED_LENGTH#NativeDeclaration#</externalToolInfo>
                         <externalToolInfo>ARXML|</externalToolInfo>
